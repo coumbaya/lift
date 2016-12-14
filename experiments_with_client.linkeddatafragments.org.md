@@ -1,22 +1,22 @@
 # LIFT: Deduced BGPs of queries executed in isolation
 
-In this page, we present LIFT's deduced BGPs using as input traces of queries in < http://client.linkeddatafragments.org >, each executed one by one.
+In this page, we present LIFT's deduced BGPs using as input traces of queries in http://client.linkeddatafragments.org, each executed one by one.
 
 **Summary**
 
 
-1. [**Deduced BGPs per query**](https://github.com/coumbaya/lift/blob/master/experiments_with_menu_client.linkeddatafragments.org#deduced-bgps-per-query)
+1. [**Deduced BGPs per query**](https://github.com/coumbaya/lift/blob/master/experiments_with_client.linkeddatafragments.org#deduced-bgps-per-query)
 
-2.  [**Recall and precision plots**](https://github.com/coumbaya/lift/blob/master/experiments_with_menu_client.linkeddatafragments.org#recall-and-precision-plots)
+2.  [**Recall and precision plots**](https://github.com/coumbaya/lift/blob/master/experiments_with_client.linkeddatafragments.org#recall-and-precision-plots)
 
-3.   [**Appendix: general information**](https://github.com/coumbaya/lift/blob/master/experiments_with_menu_client.linkeddatafragments.org#general-dataset-information)
-   * [Executed queries per dataset](https://github.com/coumbaya/lift/blob/master/experiments_with_menu_client.linkeddatafragments.org#executed-queries-per-dataset)
-   * [IRI prefixes to authorities](https://github.com/coumbaya/lift/blob/master/experiments_with_menu_client.linkeddatafragments.org#iri-prefixes-to-authorities)
+3.   [**Appendix: general information**](https://github.com/coumbaya/lift/blob/master/experiments_with_client.linkeddatafragments.org#general-dataset-information)
+   * [Executed queries per dataset](https://github.com/coumbaya/lift/blob/master/experiments_with_client.linkeddatafragments.org#executed-queries-per-dataset)
+   * [IRI prefixes to authorities](https://github.com/coumbaya/lift/blob/master/experiments_with_client.linkeddatafragments.org#iri-prefixes-to-authorities)
 
 
 ## Deduced BGPs per query
 
-Next, we present deduced BGPs of LIFT as well as precision recall of joins per query, as presented in < http://client.linkeddatafragments.org/ >, each executed in isolation.
+Next, we present deduced BGPs of LIFT as well as precision recall of joins per query, as presented in http://client.linkeddatafragments.org/, each executed in isolation.
 
 | ID           | Query                              | Deduced BGPs                       | Recall of joins | Precision of joins |
 | -------------|:----------------------------------:|:----------------------------------:| ------------------ |:---------------:|
@@ -73,10 +73,10 @@ In the table below, we see which queries correspond to every dataset, representi
 
 | Dataset                                         | Queries               |
 | ------------------------------------------------|:---------------------:|
-| DBpedia 2015-04                                 |Q1, Q3, Q4, Q5, Q6,   Q7, Q8, Q9, Q10, Q11, Q12, Q13, Q14, Q15, Q16, Q19, Q20, Q21, Q22, Q24, Q27, Q28, Q29, Q30|         |
-| Ghent University Academic bibliography (Ughent) |Q2, Q23, Q25, Q29, Q30 |
-| Linked Open Vocabulairies (LOV)                 |Q17, Q18, Q26          |
-| Virtual International Authority File (VIAF)     |Q29, Q29, Q30          |
+| DBpedia 2015-04                                 | Q1, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11, Q12, Q13, Q14, Q15, Q16, Q19, Q20, Q21, Q22, Q24, Q27, Q28, Q29, Q30 |
+| Ghent University Academic bibliography (Ughent) | Q2, Q23, Q25, Q29, Q30 |
+| Linked Open Vocabulairies (LOV)                 | Q17, Q18, Q26          |
+| Virtual International Authority File (VIAF)     | Q29, Q29, Q30          |
 
 
 **Note**: Q28 needs two datasets to be answered, DBpedia and VIAF.
