@@ -3,7 +3,8 @@
 LInked data Fragment Tracking
 
 
-LIFT's experiment results, with traces of (1) queries in http://client.linkeddatafragments.org and (2) real traces of Usewod, are available [here](https://github.com/coumbaya/lift/blob/master/experiments.md)
+LIFT's experiment results, with traces of queries in http://client.linkeddatafragments.org, are available [here](https://github.com/coumbaya/lift/blob/master/experiments.md)
+LIFT's experiment results, with the real log of DBpedia in USEWOD, are available [here](https://github.com/coumbaya/lift/blob/master/usewod.md)
 
 
 ## Install LIFT's dependencies
