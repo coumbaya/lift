@@ -72,7 +72,7 @@ In order to test LIFT's functionality, you can use traces from queries of the me
 1. In directory [**query_traces_isolated**](https://github.com/coumbaya/lift/tree/master/experiments_with_client.linkeddatafragments.org/query_traces_isolated) you find traces of queries executed in isolation, each in the same LDF server.
 2. In directory [**query_traces_concurrency**](https://github.com/coumbaya/lift/tree/master/experiments_with_client.linkeddatafragments.org/query_traces_concurency) you find traces of queries of the same collection executed in concurrence, each in the same LDF server.
 
-LIFT's experiment results, with traces of queries in http://client.linkeddatafragments.org, are available [here](https://github.com/coumbaya/lift/blob/master/experiments_with_client.linkeddatafragments.org.md)
+LIFT's experiment results, with traces of queries in http://client.linkeddatafragments.org, are available [here](https://github.com/coumbaya/feta/blob/master/experiments_with_client.linkeddatafragments.org.md)
 
 You can simulate your own concurrent execution trace and generate your suffle with our **traceMixer** programm, availble  [here](https://github.com/coumbaya/traceMixer)
 
