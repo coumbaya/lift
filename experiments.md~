@@ -18,8 +18,8 @@ In this page, we present LIFT's deduced BGPs using as input traces of queries in
 
 Next, we present deduced BGPs of LIFT as well as precision recall of joins per query, as presented in http://client.linkeddatafragments.org/, each executed in isolation.
 
-| ID    | Query                              | Deduced BGPs                       | Recall of joins | Precision of joins |
-| ----|:----------------------------:|:----------------------------------:| ------------------ |:---------------:|
+| ID    | Query             | Deduced BGPs                       | Recall of joins | Precision of joins |
+| ----|:-------------------:|:----------------------------------:| ------------------ |:---------------:|
 | Q1           | SELECT ?movie ?title ?name WHERE { ?movie dbpedia-owl:starring ?actor . (tp1) ?actor rdfs:label "Brad Pitt"@en . (tp2) ?movie rdfs:label ?title . (tp3) ?movie dbpedia-owl:director  director . (tp4) ?director rdfs:label ?name . (tp5) FILTER LANGMATCHES(LANG(?title), "EN") FILTER LANGMATCHES(LANG(?name), "EN") }  |    |          |       |
 | Q2           | SELECT ?title ?classification WHERE { ?author foaf:name "Anne De Paepe" .   (tp1) ?publication dc:creator ?author .    (tp2) ?publication dc:title ?title .   (tp3) ?publication <http://lib.ugent.be/classification/classification>  ?classification .   (tp4) } |     |      |         |
 | Q3           | SELECT DISTINCT ?entity WHERE {   ?entity a dbpedia-owl:Airport .   (tp1)   ?entity dbpprop:cityServed dbpedia:Italy  .   (tp2)  }  |     |          |       |
