@@ -108,6 +108,24 @@ In the table below, we see which queries correspond to every dataset, representi
 | Virtual International Authority File (VIAF)     | Q28, Q29, Q30          |
 
 
+### Concurently executed queries
+
+In the table below, we see the collection of queries, executed concurrently over a single LDF server.
+
+
+| Collection        | Queries                 |
+| ------------------|:-----------------------:|
+| DBpedia 1 (DB1)   | Q1, Q8, Q14, Q22        |
+| DBpedia 2 (DB2)   | Q3, Q11, Q15, Q20       |
+| DBpedia 3 (DB3)   | Q6, Q13, Q19, Q27       |
+| DBpedia 4 (DB4)   | Q4, Q12, Q24            |
+| DBpedia 5 (DB5)   | Q5, Q7, Q16, Q21        |
+| DBpedia 6 (DB6)   | Q9, Q10, Q29, Q30       |
+| Ughent 1 (UG1)    | Q17, Q18, Q26, Q29, Q30 |
+| LOV 1 (LV1)       | Q2, Q23, Q25, Q29, Q30  |
+| VIAF 1 (VF1)      | Q9, Q10, Q29, Q30       |
+
+
 **Note**: Q28 needs two datasets to be answered, DBpedia and VIAF.
 
 ### iri prefixes to authorities
