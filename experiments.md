@@ -1,4 +1,4 @@
-# LIFT: Experiments with real queries and Usewod real log
+# LIFT: Experiments with predifined queries and Usewod real log
 
 In this page, we present LIFT's deduced BGPs using as input (1) traces of queries in http://client.linkeddatafragments.org, each executed one by one (2) real log of DBpedia LDF server, taken from Usewod.
 
