@@ -20,8 +20,8 @@ In this page, we present LIFT's deduced BGPs using as input (1) traces of querie
 
 Next, we present deduced BGPs of LIFT as well as precision recall of joins per query, as presented in http://client.linkeddatafragments.org/, each executed in isolation.
 
-|ID | Query                   | Deduced BGPs                       |Recall (joins)| Precision (joins) |
-|----|:-----------------------:|:----------------------------------:|--------------|:-----------------:|
+|ID | Query                        | Deduced BGPs                       |Recall| Precision |
+|---|:----------------------------:|:----------------------------------:|------|:---------:|
 |Q1 | SELECT ?movie ?title ?name WHERE { <br>   ?movie dbpedia-owl:starring ?actor . (tp1)<br> ?actor rdfs:label "Brad Pitt"@en . (tp2)<br>?movie rdfs:label ?title . (tp3)<br>?movie dbpedia-owl:director  director . (tp4)<br>?director rdfs:label ?name . (tp5)<br>   FILTER LANGMATCHES(LANG(?title), "EN")<br>   FILTER LANGMATCHES(LANG(?name), "EN") }  | BGP_1 { <br> (tp2):    ?s1    rdfs:label    "Brad Pitt"@en  <br>(tp1):  ?s2   dbpedia:starring   ?s1 <br>(tp3):    ?s1     rdfs:label  ?o3 <br>(tp4):  ?s1   dbpedia-owl:director   ?o4 <br>(tp5):    ?o4    rdfs:label     ?o5 } |    1      |  1    |
 |Q2 | SELECT ?title ?classification WHERE { ?author foaf:name "Anne De Paepe" . (tp1) <br>publication dc:creator ?author . (tp2) <br>?publication dc:title ?title . (tp3)<br>?publication ugent-biblio:classification  ?classification .   (tp4) } | BGP_1{<br>  (tp1):   ?s1     foaf:name     "Anne De Paepe"   <br>(tp2):   ?s2     dcterms:creator  ?s1  <br>(tp4):   ?s2     ugent:classification    ?o3 <br>(tp3):   ?s2      dctitle:title     ?o4  } | 1   |  1  |
 |Q3 | SELECT DISTINCT ?entity WHERE {<br>?entity a dbpedia-owl:Airport . (tp1)<br>?entity dbpprop:cityServed dbpedia:Italy  . (tp2)  }  | BGP_1{<br>  (tp2):   ?s1     dbpprop:cityServed      dbpedia:Italy  <br> (tp1_equiv):  ?s1    rdf:type   dbpedia-owl:Airport }  | 1 | 1 |
@@ -62,7 +62,7 @@ In this page, we present LIFT's deduced BGPs using as input traces of the real l
 | ----------|:----------------------------------------------------------:|
 | 125       | ?s1 http://www.w3.org/2000/01/rdf-schema#label "Brad Pitt"@en . <br>?s2 http://dbpedia.org/ontology/starring ?s1 . <br>?s2 http://www.w3.org/2000/01/rdf-schema#label ?o3 . <br>?s2 http://dbpedia.org/ontology/director ?o3 . ?o3 http://www.w3.org/2000/01/rdf-schema#label ?o5 |
 | 45        | ?s1 http://www.w3.org/2000/01/rdf-schema#label "Brad Pitt"@en . <br>?s2 http://dbpedia.org/property/starring ?s1 . <br>?s2 http://www.w3.org/2000/01/rdf-schema#label ?o3 . <br>?s2 http://dbpedia.org/ontology/director ?o3 . <br>?o3 http://www.w3.org/2000/01/rdf-schema#label ?o5 |
-| 43        | ?s1 http://www.w3.org/2000/01/rdf-schema#label "York"@en . ?s2 http://dbpedia.org/ontology/birthPlace ?s1 . <br>?s2 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://dbpedia.org/ontology/Artist |
+| 43        | ?s1 http://www.w3.org/2000/01/rdf-schema#label "York"@en . <br>?s2 http://dbpedia.org/ontology/birthPlace ?s1 . <br>?s2 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://dbpedia.org/ontology/Artist |
 | 33        | ?s1 http://dbpedia.org/property/cityServed http://dbpedia.org/resource/Italy. <br>?s2 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://dbpedia.org/ontology/Airport |
 | 31        | ?s1 http://dbpedia.org/ontology/influencedBy http://dbpedia.org/resource/Pablo_Picasso . <br>?s1 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://dbpedia.org/ontology/Artist . <br>?s1 http://dbpedia.org/ontology/birthDate ?o3 |
 | 20        | http://dbpedia.org/ontology/Agent http://www.w3.org/2000/01/rdf-schema#subClassOf ?o1 . <br>?o1 http://www.w3.org/2000/01/rdf-schema#subClassOf ?o2 |
