@@ -31,8 +31,7 @@ Next, we present deduced BGPs of LIFT as well as precision recall of joins per q
 | Q7  | SELECT DISTINCT ?book ?author WHERE { \   ?book rdf:type dbpedia-owl:Book . (tp1) \   ?book dbpedia-owl:author ?author. (tp2)  } \    LIMIT 100 |  BGP_1{  (tp1):   ?s1     rdf:type     dbpedia-owl:Book   (tp2):   ?s1   dbpedia-owl:author     ?o2   }   BGP_2{   (tp2'_a):   ?s1   dbpedia-owl:author   ?o1  (tp2'_b):   ?s1    dbpedia-owl:author     ?o2  }  |  1 | 0,5 |
 | Q8  | SELECT ?award WHERE { \   ?award a dbpedia-owl:Award . (tp1) \   ?award dbpprop:country ?language . (tp2) \   ?language dbpedia-owl:language dbpedia:Dutch_language . (tp3)  } |  |  1 |  0,67  |
 | Q9  | SELECT DISTINCT ?artist ?band WHERE { \   {dbpedia:Queen_(band) dbpedia-owl:bandMember ?artist . (tp1) } \   UNION \   {  dbpedia:Queen_(band)   dbpedia-owl:formerBandMember ?artist . (tp2)  } \   ?artist dbpedia-owl:associatedBand ?band . (tp3) } |  BGP_1{  (tp1):   dbpedia:Queen_(band)    dbpedia-owl:bandMember  ?o1   (tp3):   ?o1       dbpedia-owl:associatedBand        ?o2   }   BGP_2{  (tp2):  dbpedia:Queen_(band)   dbpedia-owl:bandMember  ?o1   (tp3):  ?o1     dbpedia-owl:formerBandMember   ?o2  }  |   1  |  1 |
-| Q10 | SELECT DISTINCT ?performer ?name WHERE { \   ?work dbpedia-owl:writer dbpedia:Michael_Jackson . (tp1) \   ?work dbpedia-owl:musicalArtist ?performer . (tp2) \     OPTIONAL  {  ?performer rdfs:label ?name.  (tp3) \      FILTER LANGMATCHES(LANG(?name), "EN")  }  }   |  BGP_1{  (tp1):     ?s1   dbpedia-owl:writer    dbpedia:Michael_Jackson   (tp2):     ?s1  dbpedia-owl:musicalArtist     ?o2   (tp3'_a):    ?s1    rdfs:label       ?o3  tp3):     ?o2    rdfs:label       ?o4  }  BGP_2{   (tp2'_a):     ?s1 dbpedia-owl:musicalArtist     ?o1
- (tp3'_b):    ?s1   rdfs:label       ?o2  }   |  1 | 1 |
+| Q10 | SELECT DISTINCT ?performer ?name WHERE { \   ?work dbpedia-owl:writer dbpedia:Michael_Jackson . (tp1) \   ?work dbpedia-owl:musicalArtist ?performer . (tp2) \     OPTIONAL  {  ?performer rdfs:label ?name.  (tp3) \      FILTER LANGMATCHES(LANG(?name), "EN")  }  }   |  BGP_1{  (tp1):     ?s1   dbpedia-owl:writer    dbpedia:Michael_Jackson   (tp2):     ?s1  dbpedia-owl:musicalArtist     ?o2   (tp3'_a):    ?s1    rdfs:label       ?o3  tp3):     ?o2    rdfs:label       ?o4  }  BGP_2{   (tp2'_a):     ?s1 dbpedia-owl:musicalArtist     ?o1 (tp3'_b):    ?s1   rdfs:label       ?o2  }   |  1 | 1 |
 | Q11 | SELECT ?software ?company WHERE { \   ?software dbpedia-owl:developer ?company . (tp1) ?company dbpedia-owl:locationCountry ?country . (tp2) \   ?country rdfs:label "Belgium"@en .  (tp3) }   | BGP_1{  (tp3):    ?s1    rdfs:label     "Belgium"@en  (tp2):    ?s2    dbpedia-owl:locationCountry    ?s1  (tp1):    ?s3    dbpedia-owl:developer    ?s2 }   |  1 | 1 |
 | Q12 | SELECT ?person WHERE { \   ?person a yago:Carpenters . (tp1) \   ?person a yago:PeopleExecutedByCrucifixion . (tp2)  } |     |        |     |
 | Q13 | SELECT ?actor ?cause WHERE { \   ?actor dbpedia-owl:deathCause ?cause . (tp1) \   ?actor dc:subject dbpedia-cat:American_male_film_actors  (tp2) } |  BGP_1{  (tp2_equiv):    ?s1  rdf:type     dbpclass:PeopleExecutedByCrucifixion  (tp1_equiv):   ?s1  rdf:type   dbpclass:Carpenters     }    BGP_2{     (tp2'_a):    ?s1   rdf:type     dbpclass:Carpenters   (tp1'_a):   ?s1    rdf:type   dbpclass:Carpenters    }   | 1 | 0,5 |
@@ -92,7 +91,7 @@ In the next two Figures, we view recall and precision of joins, per collection o
 
 
 
-## Appendix: general information
+## Appendix general information
 
 In this section, we illustrate which queries are executable per dataset, and also present a table matching each IRI's authority to its corresponding prefix.
 

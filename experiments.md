@@ -11,7 +11,7 @@ In this page, we present LIFT's deduced BGPs using as input (1) traces of querie
 
 3.  [**Recall and precision plots**](https://github.com/coumbaya/lift/blob/master/experiments.md#recall-and-precision-plots)
 
-4.   [**Appendix: general information**](https://github.com/coumbaya/lift/blob/master/experiments.md#general-dataset-information)
+4.   [**Appendix general information**](https://github.com/coumbaya/lift/blob/master/experiments.md#appendix-general-information)
    * [Executed queries per dataset](https://github.com/coumbaya/lift/blob/master/experiments.md#executed-queries-per-dataset)
    * [IRI prefixes to authorities](https://github.com/coumbaya/lift/blob/master/experiments.md#iri-prefixes-to-authorities)
 
@@ -91,7 +91,7 @@ In the next two Figures, we view recall and precision of joins, per collection o
 
 
 
-## Appendix: general information
+## Appendix general information
 
 In this section, we illustrate which queries are executable per dataset, and also present a table matching each IRI's authority to its corresponding prefix.
 
