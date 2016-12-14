@@ -5,15 +5,15 @@ In this page, we present LIFT's deduced BGPs using as input (1) traces of querie
 **Summary**
 
 
-1. [**Deduced BGPs per query**](https://github.com/coumbaya/lift/blob/master/experiments#deduced-bgps-per-query)
+1. [**Deduced BGPs per query**](https://github.com/coumbaya/lift/blob/master/experiments.md#deduced-bgps-per-query)
 
-2.  [**Top 15 most frequent deduced bgps*](https://github.com/coumbaya/lift/blob/master/experiments#top-15-most-frequent-deduced-bgps)
+2.  [**Top 15 most frequent deduced bgps**](https://github.com/coumbaya/lift/blob/master/experiments.md#top-15-most-frequent-deduced-bgps)
 
-3.  [**Recall and precision plots**](https://github.com/coumbaya/lift/blob/master/experiments#recall-and-precision-plots)
+3.  [**Recall and precision plots**](https://github.com/coumbaya/lift/blob/master/experiments.md#recall-and-precision-plots)
 
-4.   [**Appendix: general information**](https://github.com/coumbaya/lift/blob/master/experiments#general-dataset-information)
-   * [Executed queries per dataset](https://github.com/coumbaya/lift/blob/master/experiments#executed-queries-per-dataset)
-   * [IRI prefixes to authorities](https://github.com/coumbaya/lift/blob/master/experiments#iri-prefixes-to-authorities)
+4.   [**Appendix: general information**](https://github.com/coumbaya/lift/blob/master/experiments.md#general-dataset-information)
+   * [Executed queries per dataset](https://github.com/coumbaya/lift/blob/master/experiments.md#executed-queries-per-dataset)
+   * [IRI prefixes to authorities](https://github.com/coumbaya/lift/blob/master/experiments.md#iri-prefixes-to-authorities)
 
 
 ## Deduced bgps per query
@@ -22,7 +22,7 @@ Next, we present deduced BGPs of LIFT as well as precision recall of joins per q
 
 | ID  | Query             | Deduced BGPs                       | Recall of joins | Precision of joins |
 | ----|:-----------------:|:----------------------------------:| ----------------|:------------------:|
-| Q1  | SELECT ?movie ?title ?name WHERE { \   ?movie dbpedia-owl:starring ?actor . (tp1) \   ?actor rdfs:label "Brad Pitt"@en . (tp2) \   ?movie rdfs:label ?title . (tp3) \   ?movie dbpedia-owl:director  director . (tp4) \   ?director rdfs:label ?name . (tp5) \      FILTER LANGMATCHES(LANG(?title), "EN") \      FILTER LANGMATCHES(LANG(?name), "EN") }  | BGP_1 {   (tp2):    ?s1    rdfs:label    "Brad Pitt"@en  (tp1):    ?s2     dbpedia:starring     ?s1 (tp3):    ?s1     rdfs:label     ?o3 (tp4):    ?s1   dbpedia-owl:director     ?o4 (tp5):    ?o4    rdfs:label     ?o5 } |          |    1   |  1
+| Q1  | SELECT ?movie ?title ?name WHERE { \   ?movie dbpedia-owl:starring ?actor . (tp1) \   ?actor rdfs:label "Brad Pitt"@en . (tp2) \   ?movie rdfs:label ?title . (tp3) \   ?movie dbpedia-owl:director  director . (tp4) \   ?director rdfs:label ?name . (tp5) \      FILTER LANGMATCHES(LANG(?title), "EN") \      FILTER LANGMATCHES(LANG(?name), "EN") }  | BGP_1 {   (tp2):    ?s1    rdfs:label    "Brad Pitt"@en  (tp1):    ?s2     dbpedia:starring     ?s1 (tp3):    ?s1     rdfs:label     ?o3 (tp4):    ?s1   dbpedia-owl:director     ?o4 (tp5):    ?o4    rdfs:label     ?o5 } |    1      |  1    |
 | Q2  | SELECT ?title ?classification WHERE { ?author foaf:name "Anne De Paepe" . (tp1) \   publication dc:creator ?author . (tp2)  \   ?publication dc:title ?title . (tp3) \   ?publication ugent-biblio:classification  ?classification .   (tp4) } | BGP_1{  (tp1):   ?s1     foaf:name     "Anne De Paepe"   (tp2):   ?s2     dcterms:creator  ?s1  (tp4):   ?s2     ugent:classification    ?o3 (tp3):   ?s2      dctitle:title     ?o4  } | 1   |  1  |
 | Q3  | SELECT DISTINCT ?entity WHERE { \   ?entity a dbpedia-owl:Airport . (tp1) \   ?entity dbpprop:cityServed dbpedia:Italy  . (tp2)  }  | BGP_1{  (tp2):   ?s1     dbpprop:cityServed      dbpedia:Italy  (tp1_equiv):  ?s1    rdf:type      dbpedia-owl:Airport }  | 1 | 1 |
 | Q4  |  ?city  rdf:type dbpclass:AncientCities . (tp1) \ ?city dbpedia-owl:populationTotal ?popTotal . (tp2) \      OPTIONAL {  ?city dbpedia-owl:populationMetro ?popMetro . (tp3) }  \   FILTER (?popTotal > 50000) }  \     ORDER BY DESC(?popTotal)   | BGP_1{  (tp1):   ?s1      rdf:type      dbpclass:AncientCities  (tp2):   ?s1     dbpedia-owl:populationTotal      ?o2  (tp3):   ?s1     dbpedia-owl:populationMetro     ?o3 } | 1  | 1 |
@@ -45,8 +45,7 @@ Next, we present deduced BGPs of LIFT as well as precision recall of joins per q
 | Q20 | SELECT ?indDish ?belDish ?ingredient  WHERE { \   ?indDish a dbpedia-owl:Food . (tp1)  ?indDish dbpedia-owl:origin dbpedia:India . (tp2) \   ?indDish dbpedia-owl:ingredient ?ingredient . (tp3) \   ?belDish a dbpedia-owl:Food . (tp4) \   ?belDish dbpedia-owl:origin dbpedia:Belgium . (tp5) \   ?belDish dbpedia-owl:ingredient ?ingredient . (tp6)  }  |    |          |       |
 | Q21 | SELECT DISTINCT ?person WHERE { \   dbpedia:Jesus dc:subject ?common . (tp1) \   ?person a foaf:Person . (tp2) \   ?person dc:subject ?common. (tp3)  } \  LIMIT 1000  | BGP_1{  (tp1):    dbpedia :Jesus    dc:subject     ?o1  (tp3):    ?s2    dc:subject     ?injectobj(tp1)  (tp2_equiv):   ?s2      rdf:type      foaf:Person   }   BGP_2{ (tp2'_a):   ?s1  rdf:type      foaf:Person     (tp2'_b):   ?s1     rdf:type      foaf:Person   } | 1 | 0,67 |
 | Q22 | SELECT ?place ?relation WHERE { \   ?place rdf:type dbpedia-owl:Settlement . (tp1) \   ?place ?relation dbpedia:Barack_Obama . (tp2)  } | BGP_1{  (tp2):    ?s1   ?p1  dbpedia :Barack_Obam  (tp1):     ?s1    rdf:type       dbpedia-owl:Settleme   } | 1 | 1 |
-| Q23 | SELECT ?jansen ?janssen ?title { \   ?publication dc:creator ?creator . (tp1) \   ?creator foaf:givenname ?jansen . (tp2) \   ?creator foaf:surname "Jansen" . (tp3) \   ?publication dc:creator ?name . (tp4) ?name foaf:givenname ?janssen . (tp5) \   ?name foaf:surname "Janssen" . (tp6) \   ?publication dc:title ?title . (tp7) }  |  BGP_1{  (tp3):   ?s1    foaf:surname     Jansen  (tp2):    ?s1    foaf:givenname    ?o2 (tp1):    ?s3   dc:creator    ?s1 (tp6'_a):   ?s1     foaf:surname      "Janssen"  (tp7):    ?s3   dc:title      ?o5  (tp4):    ?s3      dc:creator    ?o6 (tp5):    ?o6     foaf:givenname     ?o7 (tp4'_a):    ?s3     dc:creator    ?o8 (tp6):    ?o6    foaf:surname     "Janssen"
-} | 1 | 0,75 |
+| Q23 | SELECT ?jansen ?janssen ?title { \   ?publication dc:creator ?creator . (tp1) \   ?creator foaf:givenname ?jansen . (tp2) \   ?creator foaf:surname "Jansen" . (tp3) \   ?publication dc:creator ?name . (tp4) ?name foaf:givenname ?janssen . (tp5) \   ?name foaf:surname "Janssen" . (tp6) \   ?publication dc:title ?title . (tp7) }  |  BGP_1{  (tp3):   ?s1    foaf:surname     Jansen  (tp2):    ?s1    foaf:givenname    ?o2 (tp1):    ?s3   dc:creator    ?s1 (tp6'_a):   ?s1     foaf:surname      "Janssen"  (tp7):    ?s3   dc:title      ?o5  (tp4):    ?s3      dc:creator    ?o6 (tp5):    ?o6     foaf:givenname     ?o7 (tp4'_a):    ?s3     dc:creator    ?o8 (tp6):    ?o6    foaf:surname     "Janssen" } | 1 | 0,75 |
 | Q24 | SELECT ?clubName ?playerName WHERE { \   ?club a dbpedia-owl:SoccerClub . (tp1) \   ?club  dbpedia-owl:ground ?city . (tp2) \   ?club  rdfs:label ?clubName . (tp3) \   ?player dbpedia-owl:team ?club . (tp4) \   ?player dbpedia-owl:birthPlace ?city . (tp5) \   ?player rdfs:label ?playerName . (tp6) \   ?city dbpedia-owl:country dbpedia:Spain. (tp7) \      FILTER LANGMATCHES(LANG(?clubName), "EN") \      FILTER LANGMATCHES(LANG(?playerName), "EN") }         |    |           |   |
 | Q25 | SELECT DISTINCT ?coauthorName { \   ?publication1 dc:creator ?coauthor . (tp1) \   ?coauthor foaf:name "Etienne Vermeersch". (tp2) \   ?coauthor foaf:name ?coauthorName . (tp3) \   XOR { \   ?publication2 dc:creator ?coauthor .  (tp4) \   ?coauthor   foaf:name "Freddy Mortier". (tp5) \   ?coauthor foaf:name ?coauthorName. (tp6) } }       |   |          |       |
 | Q26 | SELECT distinct ?license  WHERE { \   ?ontology a owl:Ontology . (tp1) \   ?ontology  dc:license ?license. (tp2) } |    |          |      |

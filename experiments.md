@@ -5,15 +5,15 @@ In this page, we present LIFT's deduced BGPs using as input (1) traces of querie
 **Summary**
 
 
-1. [**Deduced BGPs per query**](https://github.com/coumbaya/lift/blob/master/experiments#deduced-bgps-per-query)
+1. [**Deduced BGPs per query**](https://github.com/coumbaya/lift/blob/master/experiments.md#deduced-bgps-per-query)
 
-2.  [**Top 15 most frequent deduced bgps*](https://github.com/coumbaya/lift/blob/master/experiments#top-15-most-frequent-deduced-bgps)
+2.  [**Top 15 most frequent deduced bgps**](https://github.com/coumbaya/lift/blob/master/experiments.md#top-15-most-frequent-deduced-bgps)
 
-3.  [**Recall and precision plots**](https://github.com/coumbaya/lift/blob/master/experiments#recall-and-precision-plots)
+3.  [**Recall and precision plots**](https://github.com/coumbaya/lift/blob/master/experiments.md#recall-and-precision-plots)
 
-4.   [**Appendix: general information**](https://github.com/coumbaya/lift/blob/master/experiments#general-dataset-information)
-   * [Executed queries per dataset](https://github.com/coumbaya/lift/blob/master/experiments#executed-queries-per-dataset)
-   * [IRI prefixes to authorities](https://github.com/coumbaya/lift/blob/master/experiments#iri-prefixes-to-authorities)
+4.   [**Appendix: general information**](https://github.com/coumbaya/lift/blob/master/experiments.md#general-dataset-information)
+   * [Executed queries per dataset](https://github.com/coumbaya/lift/blob/master/experiments.md#executed-queries-per-dataset)
+   * [IRI prefixes to authorities](https://github.com/coumbaya/lift/blob/master/experiments.md#iri-prefixes-to-authorities)
 
 
 ## Deduced bgps per query
@@ -22,7 +22,7 @@ Next, we present deduced BGPs of LIFT as well as precision recall of joins per q
 
 | ID  | Query             | Deduced BGPs                       | Recall of joins | Precision of joins |
 | ----|:-----------------:|:----------------------------------:| ----------------|:------------------:|
-| Q1  | SELECT ?movie ?title ?name WHERE { \   ?movie dbpedia-owl:starring ?actor . (tp1) \   ?actor rdfs:label "Brad Pitt"@en . (tp2) \   ?movie rdfs:label ?title . (tp3) \   ?movie dbpedia-owl:director  director . (tp4) \   ?director rdfs:label ?name . (tp5) \      FILTER LANGMATCHES(LANG(?title), "EN") \      FILTER LANGMATCHES(LANG(?name), "EN") }  | BGP_1 {   (tp2):    ?s1    rdfs:label    "Brad Pitt"@en  (tp1):    ?s2     dbpedia:starring     ?s1 (tp3):    ?s1     rdfs:label     ?o3 (tp4):    ?s1   dbpedia-owl:director     ?o4 (tp5):    ?o4    rdfs:label     ?o5 } |          |    1   |  1
+| Q1  | SELECT ?movie ?title ?name WHERE { \   ?movie dbpedia-owl:starring ?actor . (tp1) \   ?actor rdfs:label "Brad Pitt"@en . (tp2) \   ?movie rdfs:label ?title . (tp3) \   ?movie dbpedia-owl:director  director . (tp4) \   ?director rdfs:label ?name . (tp5) \      FILTER LANGMATCHES(LANG(?title), "EN") \      FILTER LANGMATCHES(LANG(?name), "EN") }  | BGP_1 {   (tp2):    ?s1    rdfs:label    "Brad Pitt"@en  (tp1):    ?s2     dbpedia:starring     ?s1 (tp3):    ?s1     rdfs:label     ?o3 (tp4):    ?s1   dbpedia-owl:director     ?o4 (tp5):    ?o4    rdfs:label     ?o5 } |    1      |  1    |
 | Q2  | SELECT ?title ?classification WHERE { ?author foaf:name "Anne De Paepe" . (tp1) \   publication dc:creator ?author . (tp2)  \   ?publication dc:title ?title . (tp3) \   ?publication ugent-biblio:classification  ?classification .   (tp4) } | BGP_1{  (tp1):   ?s1     foaf:name     "Anne De Paepe"   (tp2):   ?s2     dcterms:creator  ?s1  (tp4):   ?s2     ugent:classification    ?o3 (tp3):   ?s2      dctitle:title     ?o4  } | 1   |  1  |
 | Q3  | SELECT DISTINCT ?entity WHERE { \   ?entity a dbpedia-owl:Airport . (tp1) \   ?entity dbpprop:cityServed dbpedia:Italy  . (tp2)  }  | BGP_1{  (tp2):   ?s1     dbpprop:cityServed      dbpedia:Italy  (tp1_equiv):  ?s1    rdf:type      dbpedia-owl:Airport }  | 1 | 1 |
 | Q4  |  ?city  rdf:type dbpclass:AncientCities . (tp1) \ ?city dbpedia-owl:populationTotal ?popTotal . (tp2) \      OPTIONAL {  ?city dbpedia-owl:populationMetro ?popMetro . (tp3) }  \   FILTER (?popTotal > 50000) }  \     ORDER BY DESC(?popTotal)   | BGP_1{  (tp1):   ?s1      rdf:type      dbpclass:AncientCities  (tp2):   ?s1     dbpedia-owl:populationTotal      ?o2  (tp3):   ?s1     dbpedia-owl:populationMetro     ?o3 } | 1  | 1 |
@@ -31,8 +31,7 @@ Next, we present deduced BGPs of LIFT as well as precision recall of joins per q
 | Q7  | SELECT DISTINCT ?book ?author WHERE { \   ?book rdf:type dbpedia-owl:Book . (tp1) \   ?book dbpedia-owl:author ?author. (tp2)  } \    LIMIT 100 |  BGP_1{  (tp1):   ?s1     rdf:type     dbpedia-owl:Book   (tp2):   ?s1   dbpedia-owl:author     ?o2   }   BGP_2{   (tp2'_a):   ?s1   dbpedia-owl:author   ?o1  (tp2'_b):   ?s1    dbpedia-owl:author     ?o2  }  |  1 | 0,5 |
 | Q8  | SELECT ?award WHERE { \   ?award a dbpedia-owl:Award . (tp1) \   ?award dbpprop:country ?language . (tp2) \   ?language dbpedia-owl:language dbpedia:Dutch_language . (tp3)  } |  |  1 |  0,67  |
 | Q9  | SELECT DISTINCT ?artist ?band WHERE { \   {dbpedia:Queen_(band) dbpedia-owl:bandMember ?artist . (tp1) } \   UNION \   {  dbpedia:Queen_(band)   dbpedia-owl:formerBandMember ?artist . (tp2)  } \   ?artist dbpedia-owl:associatedBand ?band . (tp3) } |  BGP_1{  (tp1):   dbpedia:Queen_(band)    dbpedia-owl:bandMember  ?o1   (tp3):   ?o1       dbpedia-owl:associatedBand        ?o2   }   BGP_2{  (tp2):  dbpedia:Queen_(band)   dbpedia-owl:bandMember  ?o1   (tp3):  ?o1     dbpedia-owl:formerBandMember   ?o2  }  |   1  |  1 |
-| Q10 | SELECT DISTINCT ?performer ?name WHERE { \   ?work dbpedia-owl:writer dbpedia:Michael_Jackson . (tp1) \   ?work dbpedia-owl:musicalArtist ?performer . (tp2) \     OPTIONAL  {  ?performer rdfs:label ?name.  (tp3) \      FILTER LANGMATCHES(LANG(?name), "EN")  }  }   |  BGP_1{  (tp1):     ?s1   dbpedia-owl:writer    dbpedia:Michael_Jackson   (tp2):     ?s1  dbpedia-owl:musicalArtist     ?o2   (tp3'_a):    ?s1    rdfs:label       ?o3  tp3):     ?o2    rdfs:label       ?o4  }  BGP_2{   (tp2'_a):     ?s1 dbpedia-owl:musicalArtist     ?o1
- (tp3'_b):    ?s1   rdfs:label       ?o2  }   |  1 | 1 |
+| Q10 | SELECT DISTINCT ?performer ?name WHERE { \   ?work dbpedia-owl:writer dbpedia:Michael_Jackson . (tp1) \   ?work dbpedia-owl:musicalArtist ?performer . (tp2) \     OPTIONAL  {  ?performer rdfs:label ?name.  (tp3) \      FILTER LANGMATCHES(LANG(?name), "EN")  }  }   |  BGP_1{  (tp1):     ?s1   dbpedia-owl:writer    dbpedia:Michael_Jackson   (tp2):     ?s1  dbpedia-owl:musicalArtist     ?o2   (tp3'_a):    ?s1    rdfs:label       ?o3  tp3):     ?o2    rdfs:label       ?o4  }  BGP_2{   (tp2'_a):     ?s1 dbpedia-owl:musicalArtist     ?o1 (tp3'_b):    ?s1   rdfs:label       ?o2  }   |  1 | 1 |
 | Q11 | SELECT ?software ?company WHERE { \   ?software dbpedia-owl:developer ?company . (tp1) ?company dbpedia-owl:locationCountry ?country . (tp2) \   ?country rdfs:label "Belgium"@en .  (tp3) }   | BGP_1{  (tp3):    ?s1    rdfs:label     "Belgium"@en  (tp2):    ?s2    dbpedia-owl:locationCountry    ?s1  (tp1):    ?s3    dbpedia-owl:developer    ?s2 }   |  1 | 1 |
 | Q12 | SELECT ?person WHERE { \   ?person a yago:Carpenters . (tp1) \   ?person a yago:PeopleExecutedByCrucifixion . (tp2)  } |     |        |     |
 | Q13 | SELECT ?actor ?cause WHERE { \   ?actor dbpedia-owl:deathCause ?cause . (tp1) \   ?actor dc:subject dbpedia-cat:American_male_film_actors  (tp2) } |  BGP_1{  (tp2_equiv):    ?s1  rdf:type     dbpclass:PeopleExecutedByCrucifixion  (tp1_equiv):   ?s1  rdf:type   dbpclass:Carpenters     }    BGP_2{     (tp2'_a):    ?s1   rdf:type     dbpclass:Carpenters   (tp1'_a):   ?s1    rdf:type   dbpclass:Carpenters    }   | 1 | 0,5 |
