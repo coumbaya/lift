@@ -20,7 +20,7 @@ In this page, we present LIFT's deduced BGPs using as input (1) traces of querie
 
 Next, we present deduced BGPs of LIFT as well as precision/recall of joins per query, for queries presented in http://client.linkeddatafragments.org/, each executed in isolation.
 
-fontsize: 11pt
+ <span style="color: #f2cf4a; font-family: Babas; font-size: 2em;">INSPIRATION DAY</span>
 
 |ID | Query                                 | Deduced BGPs                    |Recall|Precision|
 |---|:--------------------------------------|:--------------------------------|------|:--------|
