@@ -152,7 +152,6 @@ Finally, we match each authority to a prefix for the corresponding datasets, as 
 | dbpedia-owl    | http://dbpedia.org/ontology/ |
 | dbpprop        | http://dbpedia.org/property/ |
 | dbpclass       | http://dbpedia.org/class/yago/ |
-| dbpedia-cat    | dbpedia:Category/ |
+| dbpedia-cat    | http://dbpedia.org/resource/Category/ |
 | ugent          | http://lib.ugent.be/classification/classification/ |
 | ugent-biblio   | http://data.linkeddatafragments.org/.well-known/genid/ugent-biblio/ |
-
