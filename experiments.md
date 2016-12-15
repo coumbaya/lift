@@ -1,6 +1,6 @@
 # LIFT: Experiments with menu queries & real log traces
 
-In this page, we present LIFT's deduced BGPs using as input (1) traces of queries in http://client.linkeddatafragments.org, each executed one by one, and, (2) traces from the real log of DBpedia LDF server, taken from Usewod 14th October 2014-27th February 2015.
+In this page, we present LIFT's deduced BGPs using as input (1) traces of queries in http://client.linkeddatafragments.org, each executed one by one, and, (2) traces of DBpedia LDF server's real log, from Usewod logs in [here](http://usewod.org/data-sets.html), during the period of 14th October 2014-27th February 2015.
 
 **Summary**
 
