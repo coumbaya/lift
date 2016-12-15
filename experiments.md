@@ -60,35 +60,35 @@ In this page, we present LIFT's deduced BGPs using as input traces of the real l
 
 | Frequency | Deduced BGP                                                |
 | ----------|:----------------------------------------------------------:|
-| 125       | ?s1 http://www.w3.org/2000/01/rdf-schema#label "Brad Pitt"@en . <br>?s2 http://dbpedia.org/ontology/starring ?s1 . <br>?s2 http://www.w3.org/2000/01/rdf-schema#label ?o3 . <br>?s2 http://dbpedia.org/ontology/director ?o3 . ?o3 http://www.w3.org/2000/01/rdf-schema#label ?o5 |
-| 45        | ?s1 http://www.w3.org/2000/01/rdf-schema#label "Brad Pitt"@en . <br>?s2 http://dbpedia.org/property/starring ?s1 . <br>?s2 http://www.w3.org/2000/01/rdf-schema#label ?o3 . <br>?s2 http://dbpedia.org/ontology/director ?o3 . <br>?o3 http://www.w3.org/2000/01/rdf-schema#label ?o5 |
-| 43        | ?s1 http://www.w3.org/2000/01/rdf-schema#label "York"@en . <br>?s2 http://dbpedia.org/ontology/birthPlace ?s1 . <br>?s2 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://dbpedia.org/ontology/Artist |
-| 33        | ?s1 http://dbpedia.org/property/cityServed http://dbpedia.org/resource/Italy. <br>?s2 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://dbpedia.org/ontology/Airport |
-| 31        | ?s1 http://dbpedia.org/ontology/influencedBy http://dbpedia.org/resource/Pablo_Picasso . <br>?s1 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://dbpedia.org/ontology/Artist . <br>?s1 http://dbpedia.org/ontology/birthDate ?o3 |
-| 20        | http://dbpedia.org/ontology/Agent http://www.w3.org/2000/01/rdf-schema#subClassOf ?o1 . <br>?o1 http://www.w3.org/2000/01/rdf-schema#subClassOf ?o2 |
-| 17        | http://dbpedia.org/ontology/Activity http://www.w3.org/2000/01/rdf-schema#subClassOf ?o1 . <br>?o1 http://www.w3.org/2000/01/rdf-schema#subClassOf ?o2 |
-| 16        | ?s1 http://www.w3.org/2000/01/rdf-schema#label "Trinity College, Dublin"@en . <br>?s2 http://dbpedia.org/ontology/almaMater ?s1 . <br>?s2 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://dbpedia.org/ontology/Writer |
-| 14        |  ?s1 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://dbpedia.org/ontology/Book . <br>?s1 http://dbpedia.org/ontology/author ?o2 |
-| 12        |  ?s1 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://dbpedia.org/class/yago/PeopleExecutedByCrucifixion . <br>?s1 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://dbpedia.org/class/yago/Carpenters |
-| 11        |  ?s1 http://dbpedia.org/ontology/ingredient ?o1 . <br>?s1 http://dbpedia.org/ontology/kingdom  http://dbpedia.org/ressource/Plant |
-| 11        |  ?s1 http://dbpedia.org/ontology/birthPlace http://dbpedia.org/resource/Úrbel_del_Castillo . <br>?s1 http://dbpedia.org/ontology/team ?o2 |
-| 10        |  ?s1 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://xmlns.com/foaf/0.1/Person . <br>?s1 http://xmlns.com/foaf/0.1/isPrimaryTopicOf ?o2 |
-| 10        |  ?s1 http://dbpedia.org/ontology/type http://dbpedia.org/resource/Dessert . <br>?s1 http://dbpedia.org/ontology/ingredient ?o1 . <br>?o1 http://dbpedia.org/ontology/kingdom http://dbpedia.org/ressource/Plant |
-| 8         |  http://dbpedia.org/resource/Raspberry_Pi http://dbpedia.org/ontology/operatingSystem ?o1 .  <br>?s1 http://dbpedia.org/ontology/operatingSystem ?o1 . <br>?s1 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://dbpedia.org/ontology/Device |
+| 125       | ?s1 rdfs:label "Brad Pitt"@en . <br>?s2 dbpedia-owl:starring ?s1 . <br>?s2 rdfs:label ?o3 . <br>?s2 dbpedia-owl:director ?o3 . <br>?o3 rdfs:label ?o5 |
+| 45        | ?s1 rdfs:label "Brad Pitt"@en . <br>?s2 dbppropstarring ?s1 . <br>?s2 rdfs:label ?o3 . <br>?s2 dbpedia-owl:director ?o3 . <br>?o3 rdfs:label ?o5 |
+| 43        | ?s1 rdfs:label "York"@en . <br>?s2 dbpedia-owl:birthPlace ?s1 . <br>?s2 rdf:type dbpedia-owl:Artist |
+| 33        | ?s1 dbppropcityServed dbpedia:Italy. <br>?s2 rdf:type dbpedia-owl:Airport |
+| 31        | ?s1 dbpedia-owl:influencedBy dbpedia:Pablo_Picasso . <br>?s1 rdf:type dbpedia-owl:Artist . <br>?s1 dbpedia-owl:birthDate ?o3 |
+| 20        | dbpedia-owl:Agent rdfs:subClassOf ?o1 . <br>?o1 rdfs:subClassOf ?o2 |
+| 17        | dbpedia-owl:Activity rdfs:subClassOf ?o1 . <br>?o1 rdfs:subClassOf ?o2 |
+| 16        | ?s1 rdfs:label "Trinity College, Dublin"@en . <br>?s2 dbpedia-owl:almaMater ?s1 . <br>?s2 rdf:type dbpedia-owl:Writer |
+| 14        |  ?s1 rdf:type dbpedia-owl:Book . <br>?s1 dbpedia-owl:author ?o2 |
+| 12        |  ?s1 rdf:type dbpclass:PeopleExecutedByCrucifixion . <br>?s1 rdf:type dbpclass:Carpenters |
+| 11        |  ?s1 dbpedia-owl:ingredient ?o1 . <br>?s1 dbpedia-owl:kingdom  http://dbpedia.org/ressource/Plant |
+| 11        |  ?s1 dbpedia-owl:birthPlace dbpedia:Úrbel_del_Castillo . <br>?s1 dbpedia-owl:team ?o2 |
+| 10        |  ?s1 rdf:type foaf:Person . <br>?s1 foaf:isPrimaryTopicOf ?o2 |
+| 10        |  ?s1 dbpedia-owl:type dbpedia:Dessert . <br>?s1 dbpedia-owl:ingredient ?o1 . <br>?o1 dbpedia-owl:kingdom dbpedia:dbpePlant |
+| 8         |  dbpedia:Raspberry_Pi dbpedia-owl:operatingSystem ?o1 .  <br>?s1 dbpedia-owl:operatingSystem ?o1 . <br>?s1 rdf:type dbpedia-owl:Device |
 
 
 ## Recall and precision plots
 
-In the next two Figures, we view recall and precision of joins, per query executed in isolation.
+In the next Figure, we view recall and precision of joins, per query executed in isolation.
 
-![GitHub Logo](https://github.com/coumbaya/lift/blob/master/plots/precision_joins_client_ldf_per_query.PNG)
-![GitHub Logo](https://github.com/coumbaya/lift/blob/master/plots/precision_joins_client_ldf_per_query.PNG)
+![GitHub Logo](https://github.com/coumbaya/lift/blob/master/plots/isolationRecallPrecision.PNG)
 
-In the next two Figures, we view recall and precision of joins, per collection of queries executed in concurence.
+In the next two Figures, we view precision and recall of joins per collection of queries executed in concurence, concerning DBpedia, VIAF, LOV and Ughent collections.
 
-![GitHub Logo](https://github.com/coumbaya/lift/blob/master/plots/precision_joins_client_ldf_per_query.PNG)
-![GitHub Logo](https://github.com/coumbaya/lift/blob/master/plots/precision_joins_client_ldf_per_query.PNG)
-
+![GitHub Logo](https://github.com/coumbaya/lift/blob/master/plots/concurrent_precision_dbpedia_collections.PNG)
+![GitHub Logo](https://github.com/coumbaya/lift/blob/master/plots/concurrent_precision_viaf_lov_ughent_collections.PNG)
+![GitHub Logo](https://github.com/coumbaya/lift/blob/master/plots/concurrent_recall_dbpedia_collections.PNG)
+![GitHub Logo](https://github.com/coumbaya/lift/blob/master/plots/concurrent_precision_viaf_lov_ughent_collections.PNG)
 
 
 ## Appendix information
@@ -136,7 +136,7 @@ Finally, we match each authority to a prefix for the corresponding datasets, as 
 | ---------------|:---------------------------------------------------------------------:|
 | geo            | http://www.w3.org/2003/01/geo/wgs84_pos# |
 | rdfs           | http://www.w3.org/2000/01/rdf-schema# |
-| rdf            | http://www.w3.org/1999/02/22-rdf-syntax-ns# |
+| rdf            | http://www.w3.org/1999/02/22-rdf-syntax-ns#: |
 | owl            | http://www.w3.org/2002/07/owl# |
 | skos           | http://www.w3.org/2004/02/skos/core# |
 | xsd            | http://www.w3.org/2001/XMLSchema# |
@@ -145,14 +145,14 @@ Finally, we match each authority to a prefix for the corresponding datasets, as 
 | dc11           | http://purl.org/dc/elements/1.1/ |
 | dctitle        | http://purl.org/dc/terms/title/ |
 | vann           | http://purl.org/vocab/vann/ |
-| foaf           | http://xmlns.com/foaf/0.1/ |
+| foaf           | http://xmlns.com/foaf/0.1/: |
 | void           | http://rdfs.org/ns/void# |
 | schema         | http://schema.org/sameAs/ |
-| dbpedia        | http://dbpedia.org/resource/ |
-| dbpedia-owl    | http://dbpedia.org/ontology/> |
+| dbpedia        | http://dbpedia.org/resource/: |
+| dbpedia-owl    | http://dbpedia.org/ontology/ |
 | dbpprop        | http://dbpedia.org/property/ |
 | dbpclass       | http://dbpedia.org/class/yago/ |
-| dbpedia-cat    | http://dbpedia.org/resource/Category/ |
+| dbpedia-cat    | dbpedia:Category/ |
 | ugent          | http://lib.ugent.be/classification/classification/ |
 | ugent-biblio   | http://data.linkeddatafragments.org/.well-known/genid/ugent-biblio/ |
 
