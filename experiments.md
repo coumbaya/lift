@@ -85,10 +85,10 @@ In the next Figure, we view recall and precision of joins, per query executed in
 
 In the next two Figures, we view precision and recall of joins per collection of queries executed in concurence, concerning DBpedia, VIAF, LOV and Ughent collections.
 
-![GitHub Logo](https://github.com/coumbaya/lift/blob/master/plots/concurrent_precision_dbpedia_collections.PNG)
-![GitHub Logo](https://github.com/coumbaya/lift/blob/master/plots/concurrent_precision_viaf_lov_ughent_collections.PNG)
-![GitHub Logo](https://github.com/coumbaya/lift/blob/master/plots/concurrent_recall_dbpedia_collections.PNG)
-![GitHub Logo](https://github.com/coumbaya/lift/blob/master/plots/concurrent_precision_viaf_lov_ughent_collections.PNG)
+![GitHub Logo](https://github.com/coumbaya/lift/tree/master/plots/concurrent_precision_dbpedia_collections.PNG)
+![GitHub Logo](https://github.com/coumbaya/lift/tree/master/plots/concurrent_precision_viaf_lov_ughent_collections.PNG)
+![GitHub Logo](https://github.com/coumbaya/lift/tree/master/plots/concurrent_recall_dbpedia_collections.PNG)
+![GitHub Logo](https://github.com/coumbaya/lift/tree/master/plots/concurrent_precision_viaf_lov_ughent_collections.PNG)
 
 
 ## Appendix information
