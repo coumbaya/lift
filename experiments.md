@@ -1,6 +1,8 @@
 # LIFT: Experiments with menu queries & real log traces
 
-In this page, we present LIFT's deduced BGPs using as input (1) traces of queries in http://client.linkeddatafragments.org, each executed one by one, and, (2) traces of DBpedia LDF server's real log, from Usewod logs in [here](http://usewod.org/data-sets.html), during the period of 14th October 2014-27th February 2015.
+In this page, we present LIFT's deduced BGPs using as input:<br> 
+(1) traces of queries in http://client.linkeddatafragments.org, each executed one by one, and,<br> 
+(2) traces of DBpedia LDF server's real log, from Usewod logs in [here](http://usewod.org/data-sets.html), during the period of 14th October 2014-27th February 2015.
 
 **Summary**
 
@@ -81,14 +83,14 @@ In this page, we present LIFT's deduced BGPs using as input traces of the real l
 
 In the next Figure, we view recall and precision of joins, per query executed in isolation.
 
-![GitHub Logo](https://github.com/coumbaya/lift/tree/master/plots/isolationRecallPrecision.png)
+![GitHub Logo](https://github.com/coumbaya/lift/tree/master/plots/isolationRecallPrecision.PNG)
 
 In the next two Figures, we view precision and recall of joins per collection of queries executed in concurence, concerning DBpedia, VIAF, LOV and Ughent collections.
 
-![GitHub Logo](https://github.com/coumbaya/lift/tree/master/plots/concurrent_precision_dbpedia_collections.png)
-![GitHub Logo](https://github.com/coumbaya/lift/tree/master/plots/concurrent_precision_viaf_lov_ughent_collections.png)
-![GitHub Logo](https://github.com/coumbaya/lift/tree/master/plots/concurrent_recall_dbpedia_collections.png)
-![GitHub Logo](https://github.com/coumbaya/lift/tree/master/plots/concurrent_precision_viaf_lov_ughent_collections.png)
+![GitHub Logo](https://github.com/coumbaya/lift/tree/master/plots/concurrent_precision_dbpedia_collections.PNG)
+![GitHub Logo](https://github.com/coumbaya/lift/tree/master/plots/concurrent_precision_viaf_lov_ughent_collections.PNG)
+![GitHub Logo](https://github.com/coumbaya/lift/tree/master/plots/concurrent_recall_dbpedia_collections.PNG)
+![GitHub Logo](https://github.com/coumbaya/lift/tree/master/plots/concurrent_precision_viaf_lov_ughent_collections.PNG)
 
 ## Appendix information
 
