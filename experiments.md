@@ -1,6 +1,6 @@
 # LIFT: Experiments with menu queries & real log traces
 
-In this page, we present LIFT's deduced BGPs using as input (1) traces of queries in http://client.linkeddatafragments.org, each executed one by one (2) real log of DBpedia LDF server, taken from Usewod.
+In this page, we present LIFT's deduced BGPs using as input (1) traces of queries in http://client.linkeddatafragments.org, each executed one by one, and, (2) traces from the real log of DBpedia LDF server, taken from Usewod 14th October 2014-27th February 2015.
 
 **Summary**
 
@@ -18,7 +18,7 @@ In this page, we present LIFT's deduced BGPs using as input (1) traces of querie
 
 ## Deduced bgps per query
 
-Next, we present deduced BGPs of LIFT as well as precision recall of joins per query, as presented in http://client.linkeddatafragments.org/, each executed in isolation.
+Next, we present deduced BGPs of LIFT as well as precision/recall of joins per query, for queries presented in http://client.linkeddatafragments.org/, each executed in isolation.
 
 |ID | Query                        | Deduced BGPs                       |Recall| Precision |
 |---|:----------------------------:|:----------------------------------:|------|:---------:|
@@ -145,7 +145,7 @@ Finally, we match each authority to a prefix for the corresponding datasets, as 
 | dc11           | http://purl.org/dc/elements/1.1/ |
 | dctitle        | http://purl.org/dc/terms/title/ |
 | vann           | http://purl.org/vocab/vann/ |
-| foaf           | http://xmlns.com/foaf/0.1/: |
+| foaf           | http://xmlns.com/foaf/0.1/ |
 | void           | http://rdfs.org/ns/void# |
 | schema         | http://schema.org/sameAs/ |
 | dbpedia        | http://dbpedia.org/resource/: |
