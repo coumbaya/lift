@@ -88,17 +88,17 @@ Next table shows the most frequent deduced BGPs by LIFT, for the period of 14/10
 
 In the next Figure, we view recall and precision of joins per query executed in isolation, for BGPs presented in the [previous section](https://github.com/coumbaya/lift/blob/master/experiments.md#deduced-bgps-per-executed-query-of-tpf-servers).
 
-![isolation_values](https://github.com/coumbaya/lift/blob/master/plots/isolationRecallPrecision.PNG=250x)
+![isolation_values](https://github.com/coumbaya/lift/blob/master/plots/isolationRecallPrecision.PNG?raw=true "isolation_values")
 
 
 We implemented a tool to shuffle several TPF logs according to different parameters, available [here](https://github.com/coumbaya/traceMixer). Thus, we shufle each collection of query execution traces and evaluate LIFT deduction in terms of recall and precision for different gap values. gap varies from 1% to 100% of the log duration. Each query collection, presented in the [next section](https://github.com/coumbaya/lift/blob/master/experiments.md#concurently-executed-query-sets), was shuffled 4 times and we calculate the average of results by gap. 
 
 In the next two Figures, we view precision and recall of joins per collection of queries executed in concurence, concerning DBpedia, VIAF, LOV and Ughent collections.
 
-![dbpedia_precision](https://github.com/coumbaya/lift/blob/master/plots/concurrent_precision_dbpedia_collections.PNG=250x)
-![other_precision](https://github.com/coumbaya/lift/blob/master/plots/concurrent_precision_viaf_lov_ughent_collections.PNG=250x)
-![dbpedia_recall](https://github.com/coumbaya/lift/blob/master/plots/concurrent_recall_dbpedia_collections.PNG=250x)
-![other_recall](https://github.com/coumbaya/lift/blob/master/plots/concurrent_precision_viaf_lov_ughent_collections.PNG=250x)
+![dbpedia_precision](https://github.com/coumbaya/lift/blob/master/plots/concurrent_precision_dbpedia_collections.PNG?raw=true "dbpedia_precision")
+![other_precision](https://github.com/coumbaya/lift/blob/master/plots/concurrent_precision_viaf_lov_ughent_collections.PNG?raw=true "other_precision")
+![dbpedia_recall](https://github.com/coumbaya/lift/blob/master/plots/concurrent_recall_dbpedia_collections.PNG?raw=true "dbpedia_recall")
+![other_recall](https://github.com/coumbaya/lift/blob/master/plots/concurrent_precision_viaf_lov_ughent_collections.PNG?raw=true "other_recall")
 
 ## Appendix information
 
