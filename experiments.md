@@ -60,7 +60,8 @@ In the next Table, we view deduced BGPs and recall/precision of joins, per query
 |Q30| SELECT DISTINCT ?type ?label WHERE {<br>(tp1): ?s a ?type . <br>OPTIONAL {<br>(tp2): ?type rdfs:label ?label }<br> &nbsp;&nbsp;&nbsp;FILTER LANGMATCHES<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(LANG(?label), "EN") <br>}LIMIT 100  |  BGP_1{  <br> (tp1_equiv):  ?s1     rdf:type    ?o1 . <br>(tp2):    ?s1    rdfs:label     ?o2 <br>}  | 1 | 1 |
 
 
-**Note**: Q28 needs two datasets to be answered, DBpedia and VIAF.
+**Note A**: Q28 needs two datasets to be answered, DBpedia and VIAF.
+**Note B**: With (tpi'_j) we present the "jth" false postive of the triple pattern "i" of the original query.
 
 ## Most frequent deduced bgps for usewod 2016
 
@@ -86,6 +87,7 @@ Next table shows the most frequent deduced BGPs by LIFT, for the period of 14/10
 | 10        |  ?s1 dbpedia-owl:type dbpedia:Dessert . <br>?s1 dbpedia-owl:ingredient ?o1 . <br>?o1 dbpedia-owl:kingdom dbpedia:Plant |
 | 8         |  dbpedia:Raspberry_Pi dbpedia-owl:operatingSystem ?o1 .  <br>?s1 dbpedia-owl:operatingSystem ?o1 . <br>?s1 rdf:type dbpedia-owl:Device |
 
+**Note**: When two different triple patterns have the same variable name, this represents a nested loop implementatations, where values from the former are pushed in the latter. 
 
 ## Recall and precision plots
 
