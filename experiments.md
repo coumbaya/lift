@@ -21,7 +21,7 @@ In this page, we present LIFT's deduced BGPs using as input:<br><br>
 ## Deduced BGPs per executed query of TPF servers
 
 We extracted 30 queries from the TPF web site 3 concerning DBpedia 2015-04, UGhent, LOV and VIAF. We captured http requests and answers of queries
-using the webInspector 1.2 tool, available [here](https://sourceforge.net/p/webinspector/wiki/Home/), which is preinstalled into the webrowser (e.g., Firefox or Google CHrome). We executed each query in isolation, one from another, and run LIFT using the maximum possible gap interval, a constraint between two triple patterns to consider them possibly as part of the same nested loop. For more details on datasets and queries, see [last section](https://github.com/coumbaya/lift/blob/master/experiments.md#appendix-information).
+using the webInspector 1.2 tool, available [here](https://sourceforge.net/p/webinspector/wiki/Home/), which is preinstalled into the webrowser (e.g., Firefox or Google CHrome). We executed each query in isolation one from another, and run LIFT using the maximum possible gap interval, a constraint window between two triple patterns to consider them possibly as part of the same nested loop. For more details on datasets and queries, see [last section](https://github.com/coumbaya/lift/blob/master/experiments.md#appendix-information).
 
 In the next Table, we view deduced BGPs and recall/precision of joins, per query executed in isolation over DBpedia, VIAF, LOV and Ughent.
 
@@ -91,7 +91,7 @@ In the next Figure, we view recall and precision of joins per query executed in 
 ![GitHub Logo](https://github.com/coumbaya/lift/tree/master/plots/isolationRecallPrecision.PNG)
 
 
-We implemented a tool to shuffle several TPF logs according to different parameters, available [here](https://github.com/coumbaya/traceMixer). Thus, given traces from n queries, we shifle each query colections and evaluate LIFT deduction in terms of recall and precision for different gap values. gap varies from 1% to 100% of the log duration. Each query collection, presented in the [next section](https://github.com/coumbaya/lift/blob/master/experiments.md#concurently-executed-query-sets), was shuffled 4 times and we calculate the average of results by gap. 
+We implemented a tool to shuffle several TPF logs according to different parameters, available [here](https://github.com/coumbaya/traceMixer). Thus, we shufle each collection of query execution traces and evaluate LIFT deduction in terms of recall and precision for different gap values. gap varies from 1% to 100% of the log duration. Each query collection, presented in the [next section](https://github.com/coumbaya/lift/blob/master/experiments.md#concurently-executed-query-sets), was shuffled 4 times and we calculate the average of results by gap. 
 
 In the next two Figures, we view precision and recall of joins per collection of queries executed in concurence, concerning DBpedia, VIAF, LOV and Ughent collections.
 
