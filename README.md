@@ -8,7 +8,7 @@ LInked data Fragment Tracking (LIFT): Extracting Basic Graph Patterns from Tripl
 
 LIFT experiments are available [here](https://github.com/coumbaya/lift/blob/master/experiments.md), using as input:
 
-(1) traces of queries in http://client.linkeddatafragments.org, each executed one by one, and,
+(1) traces of queries in http://client.linkeddatafragments.org, each executed one by one, and,<br>
 (2) traces of DBpedia LDF server's real log, from [USEWOD](http://usewod.org/data-sets.html) dataset, for the period of 14th October 2014-27th February 2015.
 
 
@@ -46,7 +46,7 @@ In order to execute LIFT, you must run the command:
 
 `$ java -jar "myLIFT.jar" -[option]`
 
-The first step, is to load the captured trace into a database, of your DBMS choice:
+The first step, is to load the captured trace into a DBMS database, of your choice:
 
 `--load` or `-l <path_to_trace>`: for loading a trace into the DB
 
