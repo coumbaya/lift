@@ -95,7 +95,7 @@ We implemented a tool to shuffle several TPF logs according to different paramet
 
 In the next Figure, we view precision of joins per collection of queries executed in concurence, concerning DBpedia, VIAF, LOV and Ughent collections.
 
-![dbpedia_precision](https://github.com/coumbaya/lift/blob/master/plots/concurrent_precision_dbpedia_collections.PNG?raw=true "dbpedia_precision" {width=20px height=40px})
+![dbpedia_precision](https://github.com/coumbaya/lift/blob/master/plots/concurrent_precision_dbpedia_collections.PNG?raw=true "dbpedia_precision")
 ![other_precision](https://github.com/coumbaya/lift/blob/master/plots/concurrent_precision_viaf_lov_ughent_collections.PNG?raw=true "other_precision")
 
 In the next Figure, we view recall of joins per collection of queries executed in concurence, concerning DBpedia, VIAF, LOV and Ughent collections.
