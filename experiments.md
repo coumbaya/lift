@@ -1,6 +1,6 @@
 # LIFT Experiments 
 
-The goals of the experiments were twofold, (i) to evaluate precision and recall of LIFT’s results and (ii) to show that LIFT extracts meaningful BGPs from a real TPF log. Frist, we evaluate precision and recall of LIFT deductions from traces of queries in http://client.linkeddatafragments.org executed in isolation, and then, we evaluate precision and recall of LIFT deductions from traces of these queries, this time executed concurrently under the worst case scenario that is when they come from the same IP address. Finally, we analyze the TPF log of [USEWOD](http://usewod.org/data-sets.html) for the period of 14th October 2014-27th February 2015.
+The goals of the experiments were twofold, (i) to evaluate precision and recall of LIFT’s results and (ii) to show that LIFT extracts meaningful BGPs from a real TPF log.  Frist, we evaluate precision and recall of LIFT deductions from traces of queries in http://client.linkeddatafragments.org executed in isolation, and then, we evaluate precision and recall of LIFT deductions from traces of these queries, this time executed concurrently under the worst case scenario that is when they come from the same IP address. Finally, we analyze the TPF log of [USEWOD](http://usewod.org/data-sets.html) for the period of 14th October 2014-27th February 2015.
 
 **Summary**
 
