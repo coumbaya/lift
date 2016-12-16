@@ -1,6 +1,7 @@
-# LIFT: Experiments with menu queries & real log traces
+# LIFT Experiments 
 
-In this page, we present LIFT's deduced BGPs using as input:<br><br> 
+
+In this page, we present LIFT's deduced BGPs as well as performance in recall/precision, using as input:<br><br> 
 (1) traces of queries in http://client.linkeddatafragments.org, each executed one by one, and,<br> 
 (2) traces of DBpedia LDF server's real log, from [Usewod](http://usewod.org/data-sets.html) logs, for the period of 14th October 2014-27th February 2015.
 
