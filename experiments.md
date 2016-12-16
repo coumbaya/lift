@@ -61,7 +61,7 @@ In the next Table, we view deduced BGPs and recall/precision of joins, per query
 
 
 **Note A**: Q28 needs two datasets to be answered, DBpedia and VIAF.<br>
-**Note B**: With (tpi'_j) we present the "jth" false postive of the triple pattern "i" of the original query.
+**Note B**: With (tpi'_j) we annotate the "jth" false postive for the triple pattern "i" of the original query.
 
 ## Most frequent deduced bgps for usewod 2016
 
