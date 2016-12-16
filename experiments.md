@@ -88,7 +88,7 @@ Next table shows the most frequent deduced BGPs by LIFT, for the period of 14/10
 
 In the next Figure, we view recall and precision of joins per query executed in isolation, for BGPs presented in the [previous section](https://github.com/coumbaya/lift/blob/master/experiments.md#deduced-bgps-per-executed-query-of-tpf-servers).
 
-![alt text](https://github.com/coumbaya/lift/tree/master/plots/isolationRecallPrecision.PNG)
+[[https://github.com/coumbaya/lift/tree/master/plots/isolationRecallPrecision.PNG|alt=octocat]]
 
 
 We implemented a tool to shuffle several TPF logs according to different parameters, available [here](https://github.com/coumbaya/traceMixer). Thus, we shufle each collection of query execution traces and evaluate LIFT deduction in terms of recall and precision for different gap values. gap varies from 1% to 100% of the log duration. Each query collection, presented in the [next section](https://github.com/coumbaya/lift/blob/master/experiments.md#concurently-executed-query-sets), was shuffled 4 times and we calculate the average of results by gap. 
