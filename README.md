@@ -14,7 +14,7 @@ LIFT experiments are available [here](https://github.com/coumbaya/lift/blob/mast
 
 ## Install LIFT's dependencies
 
-LIFT is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. In order to install packages and dependencies related to LIFT, you need to execute **installDepends<os-system>.sh**. This script will install: 
+LIFT is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. In order to install packages and dependencies related to LIFT, you need to execute **installDepends.sh** or **installDepends.py**. This script will install: 
    
    1. CouchDB: A Database for the Web
    
@@ -44,7 +44,7 @@ LIFT is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
 
 In order to execute LIFT, you must run the command:
 
-`$ java -jar "myLIFT.jar" -[option]`
+`$ java -jar "lift.jar" -[option]`
 
 The first step, is to load the captured trace into a DBMS database, of your choice:
 
@@ -57,8 +57,6 @@ The first step, is to load the captured trace into a DBMS database, of your choi
 `--nameDB` or `-n <db_name>`: with the DB name
 
 Then, you can launch LIFT's deduction algorithm:
-
-`--setWinSlice` or `-ws <window_in_seconds>`: for setting the maximum temporal distance between first and last subquery, defining the input DB slice (by default 3600 seconds)
 
 `--setWinJoin` or `-wj <window_in_seconds>`: for setting the maximum joinable window interval gap between two subqueries or triple patterns (by default 3600 seconds)
 
