@@ -120,6 +120,6 @@ if database == 2 or  database == 3:
 		print("installation coucdhDB")
 		executeCmd("wget https://dl.bintray.com/apache/couchdb/mac/1.6.1/Apache-CouchDB-1.6.1.zip")
 		executeCmd("unzip Apache-CouchDB-1.6.1.zip")
-		executeCmd("chmod 777 -R Apache\ CouchDB.app")
-		executeCmd("sudo mv  Apache\ CouchDB.app /Applications")
+		executeCmd("chmod 777 Apache\ CouchDB.app")
+		executeCmd("sudo mv  Apache\ CouchDB.app ~/Applications")
 
