@@ -46,7 +46,7 @@ LIFT is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
 
  2. Save traces into a database
       
-     Traces are loaded into a DBMS database, of your choice, using `$ java -jar "lift.jar" -[option]` and arguments:
+     Traces are loaded into a DBMS of your choice, using `$ java -jar "lift.jar" -[option]` and arguments:
 	
 	`--load` or `-l <path_to_trace>`: for loading a trace into the DB
 
