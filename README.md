@@ -37,29 +37,36 @@ LIFT is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
       This is an alternative DB system used to store LIFT's input logs (from individual or federation of LDF servers).
 
 
+## How to use LIFT
 
-**Note**: Traces of queries executed over TPF servers in http://client.linkeddatafragments.org, were executed in the web browser (e.g., Google Chrome) and captured with the tool WebInspector (More utils-> Developement Utils-> Network Traffic).
+ 1. Capture traces of executed queries 
+   
+      Queries are evaluated over the Web application client http://client.linkeddatafragments.org, using the Google chrome navigator. The traces of executed queries, are captured in "har" format 
+      using the Web inspector tool (More utils-> Developement Utils-> Network Traffic-> Save as har with Content).
 
-## Run LIFT
+ 2. Save traces into a database
+      
+     Traces are loaded into a DBMS database, of your choice, using `$ java -jar "lift.jar" -[option]` and arguments:
+	
+	`--load` or `-l <path_to_trace>`: for loading a trace into the DB
 
-In order to execute LIFT, you must run the command:
+	`--resetDB` or `-r`: for resetting an existing DB
 
-`$ java -jar "lift.jar" -[option]`
+	`--systemDB` or `-s <dbms_to_use>`: for setting "couchDB" or "monetDB" system (by default "couchDB")
 
-The first step, is to load the captured trace into a DBMS database, of your choice:
+	`--nameDB` or `-n <db_name>`: with the DB name
 
-`--load` or `-l <path_to_trace>`: for loading a trace into the DB
+     E.g., `$ java -jar "lift.jar" -l ~/brad_pitt_traces.har -n "query1database" `
 
-`--resetDB` or `-r`: for resetting an existing DB
+ 3. Run LIFT
+      
+     LIFT is executed, using `$ java -jar "lift.jar" -[option]` and arguments:
+	
+	`--gapWindow` or `-g <window_in_seconds>`: for setting the maximum joinable window interval gap between two subqueries or triple patterns (by default 3600 seconds)
 
-`--systemDB` or `-s <dbms_to_use>`: for setting "couchDB" or "monetDB" system (by default "couchDB")
+	`--nameDB` or `-n <db_name>`: with the DB name
 
-`--nameDB` or `-n <db_name>`: with the DB name
-
-Then, you can launch LIFT's deduction algorithm:
-
-`--setWinJoin` or `-wj <window_in_seconds>`: for setting the maximum joinable window interval gap between two subqueries or triple patterns (by default 3600 seconds)
-
+     E.g., `$ java -jar "lift.jar" -n "query1database" -g 360 `
 
 ## About and Contact
 
