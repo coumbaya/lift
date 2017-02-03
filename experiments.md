@@ -65,13 +65,16 @@ In the next Table, we view deduced BGPs and recall/precision of joins, per query
 
 ## LIFT results for queries with cycles
 
-In this paragraph, we present how LIFT treat queries with cycles. Next Table, shows two queries with cycles and their corresponding BGPs.
+Next Table, shows two queries with cycles and their corresponding BGPs.
 
 
 | Query | Deduced BGP                                                |
 |:----------------------------------------------------------|:----------------------------------------------------------|
 | SELECT DISTINCT ?book ?author WHERE {<br> ?author dbpedia-owl:birthPlace ?place .<br> ?place dbpedia-owl:country dbpedia:France .<br> ?book rdf:type dbpedia-owl:Book .<br> ?book dbpedia-owl:author ?author } | ?s1 dbpedia-owl:country  dbpedia:France .<br> ?s2  dbpedia-owl:birthPlace  ?s1 .<br>  ?s3 dbpedia-owl:author  ?s2 .<br>  ?s3  rdf:type  dbpedia-owl:Book |
-| SELECT DISTINCT ?qqn ?place WHERE {<br> ?qqn dbpedia-owl:birthPlace ?place .<br> ?place dbpedia-owl:country dbpedia:France .<br> ?qqn dbpedia-owl:deathPlace ?place } | ?s1  dbpedia-owl:country  dbpedia:France . <br> ?s2  dbpedia-owl:birthPlace  ?s1 .<br> ?s3  dbpedia-owl:deathPlace  ?s1 .<br> ?s2  dbpedia-owl:deathPlace  ?s1 .<br> ?s3  dbpedia-owl:deathPlace  ?s1 .<br> ?s3   dbpedia-owl:birthPlace ?s1 |
+| SELECT DISTINCT ?someone ?place WHERE {<br> ?someone dbpedia-owl:birthPlace ?place .<br> ?place dbpedia-owl:country dbpedia:France .<br> ?someone dbpedia-owl:deathPlace ?place } | ?s1  dbpedia-owl:country  dbpedia:France . <br> ?s2  dbpedia-owl:birthPlace  ?s1 .<br> ?s3  dbpedia-owl:deathPlace  ?s1 .<br> ?s2  dbpedia-owl:deathPlace  ?s1 .<br> ?s3  dbpedia-owl:deathPlace  ?s1 .<br> ?s3   dbpedia-owl:birthPlace ?s1 |
+
+The first query... 
+The second query, seeks to find birth and death places, of people that lived in France. From a syntactical view of this query, there exist a cycle: ?place (tp1) ---> ?place (tp2) ---> ?place (tp3) ---> ?place (tp3) ---> ?place (tp1) 
 
 
 
