@@ -39,12 +39,12 @@ LIFT is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
 
 ## How to use LIFT
 
- 1. Capture traces of executed queries 
+ 1. __Capture traces of executed queries:__
    
-      Queries are evaluated over the Web application client http://client.linkeddatafragments.org, using the Google chrome navigator. The traces of executed queries, are captured in "har" format 
+      Queries are evaluated over the Web application client http://client.linkeddatafragments.org, using the Google chrome navigator. The traces of executed queries are captured in "har" format 
       using the Web inspector tool (More utils-> Developement Utils-> Network Traffic-> Save as har with Content).
 
- 2. Save traces into a database
+ 2. __Save traces into a database:__
       
      Traces are loaded into a DBMS of your choice, using `$ java -jar "lift.jar" -[option]` and arguments:
 	
@@ -58,7 +58,7 @@ LIFT is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
 
      E.g., `$ java -jar "lift.jar" -l ~/brad_pitt_traces.har -n "query1database" `
 
- 3. Run LIFT
+ 3. __Run LIFT:__
       
      LIFT is executed, using `$ java -jar "lift.jar" -[option]` and arguments:
 	

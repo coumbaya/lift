@@ -5,9 +5,9 @@ The goals of the experiments were twofold, (i) to evaluate precision and recall 
 **Summary**
 
 
-1. [**Deduced BGPs for queries of the TPF web application**](https://github.com/coumbaya/lift/blob/master/experiments.md#deduced_bgps_for_queries_of_the_tpf_web_application)
+1. [**Deduced BGPs for queries of the TPF web application**](https://github.com/coumbaya/lift/blob/master/experiments.md#deduced-bgps-for-queries-of-the-tpf-web-application)
 
-2. [**LIFT results for queries with cycles**](https://github.com/coumbaya/lift/blob/master/experiments.md#lift_results_for_queries_with_cycles)
+2. [**LIFT results for queries with cycles**](https://github.com/coumbaya/lift/blob/master/experiments.md#lift-results-for-queries-with-cycles)
 
 3.  [**Most frequent deduced bgps for usewod 2016**](https://github.com/coumbaya/lift/blob/master/experiments.md#most-frequent-deduced-bgps-for-usewod-2016)
 
@@ -64,6 +64,21 @@ In the next Table, we view deduced BGPs and recall/precision of joins, per query
 
 
 ## LIFT results for queries with cycles
+
+In this paragraph, we present how LIFT treat queries with cycles. Next Table, shows two queries with cycles and their corresponding BGPs.
+
+
+| Query | Deduced BGP                                                |
+|:----------------------------------------------------------|:----------------------------------------------------------|
+| SELECT DISTINCT ?book ?author WHERE {<br> ?author dbpedia-owl:birthPlace ?place .<br> ?place dbpedia-owl:country dbpedia:France .<br> ?book rdf:type dbpedia-owl:Book .<br> ?book dbpedia-owl:author ?author } | ?s1 dbpedia-owl:country  dbpedia:France .<br> ?s2  dbpedia-owl:birthPlace  ?s1 .<br>  ?s3 dbpedia-owl:author  ?s2 .<br>  ?s3  rdf:type  dbpedia-owl:Book |
+| SELECT DISTINCT ?qqn ?place WHERE {<br> ?qqn dbpedia-owl:birthPlace ?place .<br> ?place dbpedia-owl:country dbpedia:France .<br> ?qqn dbpedia-owl:deathPlace ?place } | ?s1  dbpedia-owl:country  dbpedia:France . <br> ?s2  dbpedia-owl:birthPlace  ?s1 .<br> ?s3  dbpedia-owl:deathPlace  ?s1 .<br> ?s2  dbpedia-owl:deathPlace  ?s1 .<br> ?s3  dbpedia-owl:deathPlace  ?s1 .<br> ?s3   dbpedia-owl:birthPlace ?s1 |
+
+
+
+
+
+
+
 
 
 ## Most frequent deduced bgps for usewod 2016
