@@ -73,10 +73,8 @@ Next Table, shows two queries with cycles and their corresponding BGPs.
 | SELECT DISTINCT ?book ?author WHERE {<br> ?author dbpedia-owl:birthPlace ?place .<br> ?place dbpedia-owl:country dbpedia:France .<br> ?book rdf:type dbpedia-owl:Book .<br> ?book dbpedia-owl:author ?author } | ?s1 dbpedia-owl:country  dbpedia:France .<br> ?s2  dbpedia-owl:birthPlace  ?s1 .<br>  ?s3 dbpedia-owl:author  ?s2 .<br>  ?s3  rdf:type  dbpedia-owl:Book |
 | SELECT DISTINCT ?someone ?place WHERE {<br> ?someone dbpedia-owl:birthPlace ?place .<br> ?place dbpedia-owl:country dbpedia:France .<br> ?someone dbpedia-owl:deathPlace ?place } | ?s1  dbpedia-owl:country  dbpedia:France . <br> ?s2  dbpedia-owl:birthPlace  ?s1 .<br> ?s3  dbpedia-owl:deathPlace  ?s1 .<br> ?s2  dbpedia-owl:deathPlace  ?s1 .<br> ?s3  dbpedia-owl:deathPlace  ?s1 .<br> ?s3   dbpedia-owl:birthPlace ?s1 |
 
-The first query... 
-The second query, seeks to find birth and death places, of people that lived in France. From a syntactical view of this query, there exist a cycle: ?place (tp1) ---> ?place (tp2) ---> ?place (tp3) ---> ?place (tp3) ---> ?place (tp1) 
-
-
+The first query (no cycles)... 
+The second query, seeks to find birth and death places, of people that lived in France. From a syntactical view of this query, there exist a cycle:  tp1 (?place) ---> tp2 (?place) ---> tp3 (?place) ---> tp3 (?someone) ---> tp1 (?someone). But during nested loop evaluation, the TPF client uses another join ordering strategy. First, it evaluates (tp2) and pushes "?place" mappings in subjects of both (tp2), (tp3). Then, the TPF client "?someone" mappings of (tp2) are pushed into (tp3) and vice versa. In other words, the TPF client implements the joins: tp2 . tp1 (?place ---> ?place),  tp2 . tp3 (?place ---> ?place), tp1 . tp3 (?place ---> ?place), 
 
 
 
