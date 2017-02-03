@@ -5,18 +5,20 @@ The goals of the experiments were twofold, (i) to evaluate precision and recall 
 **Summary**
 
 
-1. [**Deduced BGPs per executed query of TPF servers**](https://github.com/coumbaya/lift/blob/master/experiments.md#deduced-bgps-per-executed-query-of-tpf-servers)
+1. [**Deduced BGPs for queries of the TPF web application**](https://github.com/coumbaya/lift/blob/master/experiments.md#deduced_bgps_for_queries_of_the_tpf_web_application)
 
-2.  [**Most frequent deduced bgps for usewod 2016**](https://github.com/coumbaya/lift/blob/master/experiments.md#most-frequent-deduced-bgps-for-usewod-2016)
+2. [**LIFT results for queries with cycles**](https://github.com/coumbaya/lift/blob/master/experiments.md#lift_results_for_queries_with_cycles)
 
-3.  [**Recall and precision plots**](https://github.com/coumbaya/lift/blob/master/experiments.md#recall-and-precision-plots)
+3.  [**Most frequent deduced bgps for usewod 2016**](https://github.com/coumbaya/lift/blob/master/experiments.md#most-frequent-deduced-bgps-for-usewod-2016)
 
-4.   [**Appendix information**](https://github.com/coumbaya/lift/blob/master/experiments.md#appendix-information)
+4.  [**Recall and precision plots**](https://github.com/coumbaya/lift/blob/master/experiments.md#recall-and-precision-plots)
+
+5.   [**Appendix information**](https://github.com/coumbaya/lift/blob/master/experiments.md#appendix-information)
    * [Concurently executed query sets](https://github.com/coumbaya/lift/blob/master/experiments.md#concurently-executed-query-sets)
    * [IRI prefixes to authorities](https://github.com/coumbaya/lift/blob/master/experiments.md#iri-prefixes-to-authorities)
 
 
-## Deduced BGPs per executed query of TPF servers
+## Deduced BGPs for queries of the TPF web application
 
 We extracted 30 queries from the TPF web site 3 concerning DBpedia 2015-04, UGhent, LOV and VIAF. We captured http requests and answers of queries
 using the webInspector 1.2 tool, available [here](https://sourceforge.net/p/webinspector/wiki/Home/), which is preinstalled into the webrowser (e.g., Firefox or Google Chrome). We executed each query in isolation one from another, and run LIFT using the maximum possible gap interval, a constraint window between two triple patterns to consider them possibly as part of the same nested loop. For more details on datasets and queries, see [last section](https://github.com/coumbaya/lift/blob/master/experiments.md#appendix-information).
@@ -59,6 +61,10 @@ In the next Table, we view deduced BGPs and recall/precision of joins, per query
 
 **Note A**: Q28 needs two datasets to be answered, DBpedia and VIAF.<br>
 **Note B**: With (tpi'_j) we annotate the "jth" false postive for the triple pattern "i" of the original query.
+
+
+## LIFT results for queries with cycles
+
 
 ## Most frequent deduced bgps for usewod 2016
 
