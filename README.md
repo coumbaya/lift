@@ -41,7 +41,7 @@ LIFT is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
 
  1. __Capture traces of executed queries:__
    
-      Queries are evaluated over the Web application client http://client.linkeddatafragments.org, using the Google chrome navigator. The traces of executed queries are captured in "har" format 
+      Queries are evaluated over the Web application client http://client.linkeddatafragments.org, using the **Google chrome** navigator. The traces of executed queries are captured in "har" format 
       using the Web inspector tool (More utils-> Developement Utils-> Network Traffic-> Save as har with Content).
 
  2. __Save traces into a database:__
