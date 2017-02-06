@@ -65,16 +65,15 @@ In the next Table, we view deduced BGPs and recall/precision of joins, per query
 
 ## LIFT results for queries with cycles
 
-Next Table, shows a query with cycles and the BGP that LIFT deduces.
+Next Table, shows a query with both **subject and object joins**, and the BGP that LIFT deduces.
 
 
 | Query | Deduced BGP                                                |
 |:----------------------------------------------------------|:----------------------------------------------------------|
-| SELECT DISTINCT ?person ?place WHERE {<br> ?person dbpedia-owl:birthPlace ?place .<br> ?place dbpedia-owl:country dbpedia:France .<br> ?person dbpedia-owl:deathPlace ?place } | ?s1  dbpedia-owl:country  dbpedia:France . <br> ?s2  dbpedia-owl:birthPlace  ?s1 .<br> ?s3  dbpedia-owl:deathPlace  ?s1 .<br> ?s2  dbpedia-owl:deathPlace  ?s1 .<br> ?s3  dbpedia-owl:deathPlace  ?s1 .<br> ?s3   dbpedia-owl:birthPlace ?s1 |
-
-This query seeks to find birth and death places, of people that lived in France. From a syntactical view of this query, there exist a cycle:  tp1 (?place) ---> tp2 (?place) ---> tp3 (?place) ---> tp3 (?person) ---> tp1 (?person). But during nested loop evaluation, the TPF client uses another join ordering strategy. First, it evaluates (tp2) and pushes "?place" mappings in object of both (tp1), (tp3). Then, "?someone" mappings of (tp1) are pushed into (tp3) and vice versa. In other words, the TPF client implements the joins: tp2 . tp1 (?place ---> ?place),  tp2 . tp3 (?place ---> ?place), tp1 . tp3 (?someone ---> ?someone) and finally  tp3 . tp1 (?someone ---> ?someone). Each join step is deduced by LIFT, resulting to different versions of (tp1), (tp3) as we see in the second deduced BGP, of the Table presented above. Note, that LIFT deduces and additional false self join tp3 . tp3 (?someone ---> ?someone), that can easily be pruned as pointed in the article.
+| SELECT DISTINCT ?person ?place WHERE { <br> ?place dbpedia-owl:keyPerson ?person . <br> ?person dbpedia-owl:employer ?place } |  <br> ?s1 dbpedia-owl:employer ?s2  . <br>   ?s1 dbpedia-owl:keyPerson ?s2 |
 
 
+This query seeks to find informations about persons, work places and their employers. Apparently there exist a cycle in this query, as its triple patterns are joined both in their subjects and objects. Actually, the TPF client starts with the second triple pattern i.e., ?person dbpedia-owl:employer ?place, which has the smallest cardinality (5,722 triples), and pushes in a double nested loop both its subject and object bindings into the first i.e., ?place dbpedia-owl:keyPerson ?person, which has the smallest cardinality (25,261 triples). We observe this fact in the deduced BGP of the Table above.
 
 
 ## Most frequent deduced bgps for usewod 2016

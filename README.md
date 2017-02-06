@@ -14,7 +14,7 @@ LIFT experiments are available [here](https://github.com/coumbaya/lift/blob/mast
 
 ## Install LIFT's dependencies
 
-LIFT is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. In order to install packages and dependencies related to LIFT, you need to execute **installDepends.sh** or **installDepends.py**. This script will install: 
+LIFT is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. In order to install packages and dependencies related to LIFT, you need to execute  **installDepends.py**. This script will install: 
    
    1. CouchDB: A Database for the Web
    
@@ -42,15 +42,13 @@ LIFT is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
  1. __Capture traces of executed queries:__
    
       Queries are evaluated over the Web application client http://client.linkeddatafragments.org, using the **Google chrome** navigator. The traces of executed queries are captured in "har" format 
-      using the Web inspector tool (More utils-> Developement Utils-> Network Traffic-> Save as har with Content).
+      using the Web inspector tool (More utils-> Developement Utils-> Network Traffic-> (Right clck) Save as har with Content).
 
  2. __Save traces into a database:__
       
      Traces are loaded into a DBMS of your choice, using `$ java -jar "lift.jar" -[option]` and arguments:
 	
 	`--load` or `-l <path_to_trace>`: for loading a trace into the DB
-
-	`--resetDB` or `-r`: for resetting an existing DB
 
 	`--systemDB` or `-s <dbms_to_use>`: for setting "couchDB" or "monetDB" system (by default "couchDB")
 
@@ -67,6 +65,36 @@ LIFT is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
 	`--nameDB` or `-n <db_name>`: with the DB name
 
      E.g., `$ java -jar "lift.jar" -n "query1database" -g 360 `
+
+## FAQ
+
+ 1. __The DB storage system crashes, what to do?:__
+
+
+       (i) If you are using couchdb, run:
+
+       _linux_: `sudo service couchdb restart`
+
+       _mac os_: `sudo launchctl unload -w /System/Library/LaunchDaemons/couchdb.plist`
+
+		 `sudo launchctl load -w /System/Library/LaunchDaemons/couchdb.plist`
+
+       (ii) If you are using monetdb, run:
+
+       _linux_: `sudo service monetdb5-sql restart`
+
+       _mac os_: `sudo launchctl unload -w /System/Library/LaunchDaemons/monetdb5-sql.plist`
+
+		 `sudo launchctl load -w /System/Library/LaunchDaemons/monetdb5-sql.plist`
+       
+       If it still not functions, try to restart your computer. If this also do not do the job, reinstall the script "dependencies.py" for the corresponding DBMS.
+
+       For both storage systems, **do not install multiple versions**, it may create collisions. For couchdb, use the same version than the script "dependencies.py" i.e., Apache-CouchDB-1.6.1.
+
+ 2. __Why can not I load traces captured with other navigators, than Google Chrome?__
+
+      The problem is with the response encoding. Answers must be captured in **ASCII** and not **Base64** format. There exist "decoding" plugins in other brownsers, but they can not be applied directly to the _webinspector_ tool.
+
 
 ## About and Contact
 

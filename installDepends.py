@@ -5,9 +5,9 @@ import shutil
 
 operating_system = platform.system()
 
-couchDB = 1
-monetDB = 2
-both = 3
+#couchDB = 1
+#monetDB = 2
+#both = 3
 
 #database = int(raw_input("Choose DB (1 for MonetDB, 2 for CouchDB or 3 for both): "))
 database = 3
@@ -161,10 +161,10 @@ def installCouchDB():
 			executeCmd("sudo mv  Apache\ CouchDB.app ~/Applications")
 		shutil.rmtree('Apache-CouchDB-1.6.1')
 	
-if database == monetDB or database == both:
+if database == 1 or database == 3:
 
 	installMonetDB()	
 
-if database == couchDB or database == both:
+if database == 1 or database == 3:
 
 	installCouchDB()
