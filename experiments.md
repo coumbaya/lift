@@ -73,7 +73,7 @@ Next Table, shows a query with both **subject and object joins**, and the BGP th
 | SELECT DISTINCT ?person ?place WHERE { <br> ?place dbpedia-owl:keyPerson ?person . <br> ?person dbpedia-owl:employer ?place } |  <br> ?s1 dbpedia-owl:employer ?s2  . <br>   ?s2 dbpedia-owl:keyPerson ?s1 |
 
 
-This query seeks to find informations about persons, work places and their employers. Aparaintly there exist a cycle in this query, as its triple patterns are joined both in their subjects and objects. Actually, the TPF client starts with the second triple pattern i.e., ?person dbpedia-owl:employer ?place, which has the smallest cardinality (5,722 triples), and pushes in a double nested loop both its subject and object bindings into the first i.e., ?place dbpedia-owl:keyPerson ?person, which has the largest cardinality (25,261 triples). We observe this fact in the deduced BGP of the Table above.
+This query seeks to find informations about persons, work places and their employers. Apparently there exist a (syntactical) cycle in this query, as its triple patterns are joined both in their subjects and objects. Actually, the TPF client starts with the second triple pattern i.e., ?person dbpedia-owl:employer ?place, which has the smallest cardinality (5,722 triples), and pushes in a double nested loop both its subject and object bindings into the first i.e., ?place dbpedia-owl:keyPerson ?person, which has the largest cardinality (25,261 triples). We observe this fact in the deduced BGP of the Table above.
 
 
 ## Most frequent deduced bgps for usewod 2016
