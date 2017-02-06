@@ -79,8 +79,6 @@ LIFT is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
 		`sudo launchctl unload -w /System/Library/LaunchDaemons/couchdb.plist`
 
 		`sudo launchctl load -w /System/Library/LaunchDaemons/couchdb.plist`
-<br>
-
 
 
        (ii) If you are using monetdb, run:
@@ -91,8 +89,7 @@ LIFT is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
 		`sudo launchctl unload -w /System/Library/LaunchDaemons/monetdb5-sql.plist`
 
 		`sudo launchctl load -w /System/Library/LaunchDaemons/monetdb5-sql.plist`
-<br>
-       
+
 
 
        If the database still not responds, try to restart your computer. If this also do not do the job, reinstall the script "dependencies.py" for the corresponding DBMS.
