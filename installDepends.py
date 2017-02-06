@@ -5,10 +5,6 @@ import shutil
 
 operating_system = platform.system()
 
-#couchDB = 1
-#monetDB = 2
-#both = 3
-
 #database = int(raw_input("Choose DB (1 for MonetDB, 2 for CouchDB or 3 for both): "))
 database = 3
 
