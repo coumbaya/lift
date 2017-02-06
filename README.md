@@ -75,7 +75,9 @@ LIFT is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
 
        _linux_: `sudo service couchdb restart`
 
-       _mac os_: `sudo launchctl unload -w /System/Library/LaunchDaemons/couchdb.plist`
+       _mac os_: 
+               
+                 `sudo launchctl unload -w /System/Library/LaunchDaemons/couchdb.plist`
 
 		 `sudo launchctl load -w /System/Library/LaunchDaemons/couchdb.plist`
 
@@ -83,11 +85,13 @@ LIFT is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
 
        _linux_: `sudo service monetdb5-sql restart`
 
-       _mac os_: `sudo launchctl unload -w /System/Library/LaunchDaemons/monetdb5-sql.plist`
+       _mac os_: 
+ 
+                 `sudo launchctl unload -w /System/Library/LaunchDaemons/monetdb5-sql.plist`
 
 		 `sudo launchctl load -w /System/Library/LaunchDaemons/monetdb5-sql.plist`
        
-       If it still not functions, try to restart your computer. If this also do not do the job, reinstall the script "dependencies.py" for the corresponding DBMS.
+       If the database still not responds, try to restart your computer. If this also do not do the job, reinstall the script "dependencies.py" for the corresponding DBMS.
 
        For both storage systems, **do not install multiple versions**, it may create collisions. For couchdb, use the same version than the script "dependencies.py" i.e., Apache-CouchDB-1.6.1.
 
