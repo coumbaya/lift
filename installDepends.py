@@ -155,12 +155,13 @@ def installCouchDB():
 		if operating_system == "Darwin":
 
 			executeCmd("sudo chown root /usr/local/bin/brew")
+			executeCmd("rm -f Apache-CouchDB-1.6.1.zip")
 			executeCmd("wget -O ./Apache-CouchDB-1.6.1.zip https://dl.bintray.com/apache/couchdb/mac/1.6.1/Apache-CouchDB-1.6.1.zip")
-			executeCmd("unzip Apache-CouchDB-1.6.1.zip")
-#			executeCmd("chmod 777 Apache\ CouchDB.app")
+			executeCmd("unzip Apache-CouchDB-1.6.1.zip > remove_out.txt")
+			#executeCmd("chmod 777 Apache\ CouchDB.app")
 			executeCmd("mv Apache\ CouchDB.app ~/Applications")
-			shutil.rmtree('Apache-CouchDB-1.6.1')
-			shutil.rmtree('test.txt')
+			executeCmd("rm -f Apache-CouchDB-1.6.1.zip")
+			executeCmd("rm -f remove_out.txt")
 	
 if database == 1 or database == 3:
 
