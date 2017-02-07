@@ -70,6 +70,34 @@ public class InitLift {
     private final String PASSWORD = "feta";
     // command to initialize MonetDB
     private final String INIT_MONETDB = "monetdbd start $HOME/myMONETDB/";
+    
+    
+    /* Entry -oriented hash maps */
+     
+    //  
+    
+    
+    // match each CTP to its serial id (order of identification)
+    public static HashMap<Integer, List<String>> mapCtpToSerialID;
+    // match each CTP's id, to corresponding log entries
+    public static HashMap<Integer, List<Integer>> mapCtpToLogEntries;
+    // match each CTP's id, to LDF servers that recieved it
+    public static HashMap<Integer, List<String>> mapCtpToLDFServer;
+    // match each CTP's id, to corresponding output fragment' values (i.e., out mappings)
+    public static HashMap<Integer, List<String>> mapCtpToOutMaps;
+    // match each CTP's id, to all its corresponding timeSecs (total number in seconds)
+    public static HashMap<Integer, List<Integer>> mapCtpToTimeSecs;
+    // match each CTP's id, to corresponding (possible) injected values in the subject position
+    public static HashMap<Integer, List<String>> mapCtpToInMapsSubj;
+    // match each CTP's id, to corresponding (possible) injected values in the subject position
+    public static HashMap<Integer, List<String>> mapCtpToInMapsObj;
+    // match a CTP's id, with all its different versions, that are deduced when the
+    // window join (i.e., gap) is not big enough to put them in only one
+    public static HashMap<List<String>, Integer> mapCTPtoVersionsGap;
+    // match each constant value to its oncurrences
+    public static HashMap<String, Integer> mapConstToAnsOccurs;
+    
+    
 
     public InitLift() {
 

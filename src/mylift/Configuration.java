@@ -166,15 +166,15 @@ public class Configuration {
         resetDB = false;
         setCouchDB = true;
         setMonetDB = false;
-        logPath = "york_2015.har";
-        nameDB = "dbpediaquery20";
+        logPath = "queryRebutal.har";
+        nameDB = "tot";
         collectionName = "DFWEBINSPECTOR";
         webInsTraces = true;
         xmlRespTraces = false;
 
         sliceWin = 3600;
         gapWin = 3600;
-        verbose = false;
+        verbose = true;
         isolatedExec = false;
         concurentExec = false;
         graphReduction = false;

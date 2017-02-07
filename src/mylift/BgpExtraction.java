@@ -415,15 +415,38 @@ public class BgpExtraction {
 
                                              
                                               
-                if (currDTP.get(0).contains("POSSIBLY")||currDTP.get(1).contains("POSSIBLY")||currDTP.get(2).contains("POSSIBLY")) {
+                if ((currDTP.get(0).contains("POSSIBLY")||currDTP.get(1).contains("POSSIBLY")||currDTP.get(2).contains("POSSIBLY"))) {
 
-                    continue;
+           //         continue;
                 }
-
-                            bufferWritterBGPs.write("\t\t\t Deduced LDF_" + currDTPid + ": "
-                                    + currDTP.get(0) + "     " + currDTP.get(1) + "     " + currDTP.get(2) + "\n");
+                
+                           if(currDTP.get(1).contains("keyPerson")){
+                               
+                               bufferWritterBGPs.write("\t\t\t Deduced LDF_" + currDTPid + ": INJECTEDobj(LDF_2)"+ "     " + currDTP.get(1) + "     " + currDTP.get(0) + "\n"); 
+                            
+                                 BasicUtilis.printInfo("\t\t\t Deduced LDF_" + currDTPid + ": INJECTEDobj(LDF_2)"+ "     " + currDTP.get(1) + "     " + currDTP.get(0));
+                           }
+                           
+                           else if(currDTP.get(0).contains("POSSIBLY")||currDTP.get(0).contains("POSSIBLY")){
+                               
+                               bufferWritterBGPs.write("\t\t\t Deduced LDF_" + currDTPid + ": INJECTEDobj(LDF_2)"+ "     " + currDTP.get(1) + "     " + currDTP.get(0) + "\n"); 
+                            
+                                 BasicUtilis.printInfo("\t\t\t Deduced LDF_" + currDTPid + ": INJECTEDobj(LDF_2)"+ "     " + currDTP.get(1) + "     " + currDTP.get(0));
+                           }
+                           
+                           
+                           else {
+                               bufferWritterBGPs.write("\t\t\t Deduced LDF_" + currDTPid + ": "
+                                    + currDTP.get(0) + "     " + currDTP.get(1) + "     " + currDTP.get(2) + "\n"); 
+                            
+                                
                             BasicUtilis.printInfo("\t\t\t Deduced LDF_" + currDTPid + ": "
-                                    + currDTP.get(0) + "     " + currDTP.get(1) + "     " + currDTP.get(2));
+                                    + currDTP.get(0) + "     " + currDTP.get(1) + "     " + currDTP.get(2));  
+                           }
+                           
+                          
+                         
+                             
                             bufferWritterBGPs.write("\t\t\t\t received @" + NestedLoopDetection.mapDTPoLDFServer.get(currDTPid) + "\n");
                             BasicUtilis.printInfo("\t\t\t\t received @" + NestedLoopDetection.mapDTPoLDFServer.get(currDTPid));
                         }

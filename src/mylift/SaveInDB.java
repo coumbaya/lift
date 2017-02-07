@@ -217,7 +217,7 @@ public class SaveInDB {
                 ldfServer = "", reqTime = "", queryASCII = "", ansFragment = "";
 
         /* Information parsing's variables  */
-        final String regExTime = "GMT";
+        final String regExTime = " GMT";
         final String regExSelector = "\"url\"";
         final String regLDFServer = "\"name\": \"Host\",";
         final String regExData = "mimeType";
@@ -235,6 +235,11 @@ public class SaveInDB {
                 while ((sCurrentLine = br.readLine()) != null) {
 
                     ligneNumber++;
+                    
+                    
+                    if(cntPacts==1001){
+                   //     break;
+                    }
 
                     //Identify start of a new packet (answer/query)
                     if (sCurrentLine.contains("startedDateTime")) {
@@ -305,7 +310,9 @@ public class SaveInDB {
                         //capture subquery request time
                         if (sCurrentLine.contains(regExTime)) {
 
+                            
                             String tmpTime = sCurrentLine.substring(sCurrentLine.indexOf(": \"") + 3, sCurrentLine.length() - 1);
+                          //  System.out.println(sCurrentLine);
                             receptTime = tmpTime.substring(tmpTime.indexOf(":") - 2, tmpTime.indexOf(regExTime) - 1);
                         }
 

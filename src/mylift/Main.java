@@ -23,6 +23,8 @@ public class Main {
         final Configuration myConf = new Configuration();
         final InitLift myDeduction = new InitLift();
         
+      //  final LiftGui myGui = new LiftGui();
+        
         try {
 
             // set LIFT arguments, defined by user

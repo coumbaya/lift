@@ -426,6 +426,11 @@ public class BasicUtilis {
             }
         }
 
+        if (BasicUtilis.elemInListContained(queryUnities, "http://dbpedia.org/resource/01.002_Fighter_Squadron_%22Storks%22")) {
+
+            int aazeaz = 0;
+        }
+
         // get list of refined query's unities
         queryUnitiesRefned = getProccessedUntities(queryUnities);
         queryUnitiesRefned = refineList(queryUnitiesRefned);
@@ -441,25 +446,29 @@ public class BasicUtilis {
      */
     public static String getCleanFragment(String selectorAnsFragment) {
 
-        String ansAsTP = "", tmpFullAns = "";
+        String ansAsTP = "", tmpFullAns = "", shortAns = "", fullAns = "";
 
-        //find selector's answer string subset, containing the answers
-        if (selectorAnsFragment.indexOf("hydra:property rdf:object\\n}") > 0) {
+        //remove control from TPF
+        if (selectorAnsFragment.contains("}\\n")) {
 
-            tmpFullAns = selectorAnsFragment.substring(selectorAnsFragment.indexOf("hydra:property rdf:object\\n}") + 30);
+            tmpFullAns = selectorAnsFragment.substring(selectorAnsFragment.indexOf("}\\n") + 3);
 
-            if (tmpFullAns.indexOf("\\n<http://fragments") > 0) {
+            //fragments can be returned either before metadata
+            if (tmpFullAns.indexOf("}\\n") > 0) {
+                shortAns = tmpFullAns.substring(0, tmpFullAns.indexOf("}\\n"));
+                fullAns = tmpFullAns.substring(tmpFullAns.indexOf("}\\n") + 3);
+                ansAsTP = shortAns + fullAns;
+            } //or after metadata
+            else {
+                if (tmpFullAns.indexOf(".\\n<http://fragments") > 0) {
+                    ansAsTP = tmpFullAns.substring(0, tmpFullAns.indexOf(".\\n<http://fragments"));
 
-                ansAsTP = tmpFullAns.substring(0, tmpFullAns.indexOf("\\n<http://fragments"));
-            } else if (tmpFullAns.indexOf("\\n<http://data.linkeddatafragments") > 0) {
+                } else {
+                    ansAsTP = tmpFullAns;
 
-                ansAsTP = tmpFullAns.substring(0, tmpFullAns.indexOf("\\n<http://data.linkeddatafragments"));
+                }
             }
-        }
 
-        if (ansAsTP.contains("Alcobendas_CF")) {
-
-            int qsdqsd = 0;
         }
 
         ansAsTP = ansAsTP.replaceAll(".\\\\n", "|");
@@ -494,11 +503,15 @@ public class BasicUtilis {
             currEntity = allAnsFragment.get(i);
             //Creates a lots of bugs
             currEntity = currEntity.replace("__", "_&_");
-           //Creates a lots of bugs
+            //Creates a lots of bugs
 
             currEntity = currEntity.replaceAll("|", "");
             currEntity = currEntity.replaceAll(",_", "_");
             currEntity = currEntity.replace("__", "_");
+
+            if (currEntity.contains("fragments.dbpedia")) {
+                continue;
+            }
 
             if (currEntity.endsWith(",")) {
                 currEntity = currEntity.substring(0, currEntity.length() - 1);
@@ -635,10 +648,10 @@ public class BasicUtilis {
         //remove "LDF server" and "page" information
         if (selector.contains("fragments")) {
 
-            currSelector = selector.substring(selector.indexOf("?")+1);
+            currSelector = selector.substring(selector.indexOf("?") + 1);
         }
-        
-         //remove "LDF server" and "page" information
+
+        //remove "LDF server" and "page" information
         if (selector.contains("&page")) {
 
             currSelector = selector.substring(0, selector.indexOf("&page"));
@@ -649,7 +662,7 @@ public class BasicUtilis {
         for (int i = 0; i < 3; i++) {
 
             currUnity = "";
-            if (currSelector.contains(allVars.get(i)+"=")) {
+            if (currSelector.contains(allVars.get(i) + "=")) {
 
                 if (currSelector.contains(allReg.get(i))) {
 
@@ -672,7 +685,7 @@ public class BasicUtilis {
                 //Creates a lots of bugs
                 currUnity = "";
                 currUnity = allVars.get(i).replace("__", "_&_");
-           //Creates a lots of bugs
+                //Creates a lots of bugs
 
                 allUnities.add(currUnity);
             }

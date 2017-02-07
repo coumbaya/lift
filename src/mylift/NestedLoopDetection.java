@@ -131,7 +131,7 @@ public class NestedLoopDetection {
 
         }
 
-        System.out.println("current DTPs: " + mapDTPoSerialID);
+        //System.out.println("current DTPs: " + mapDTPoSerialID);
         return mapDTPoSerialID;
     }
 
@@ -220,7 +220,7 @@ public class NestedLoopDetection {
     private List<Integer> checkCTPjoin(List<Integer> alreadyDeducedCTP, HashMap<Integer, Integer> mapCTPtoDTPs,
             HashMap<Integer, List< List<String>>> mapMatchedCandLDFtoNewCandidate, int countInner, int countOuter) {
 
-        List<String> ctpOuterMaps = CtpExtraction.mapCtpToOutMaps.get(countOuter);
+        List<String> ctpOuterMaps = CtpExtraction.mapCtpToOutMapsSubject.get(countOuter);
         List<String> pushedVals = null;
         List<String> ctpInnerMapsSubj = CtpExtraction.mapCtpToInMapsSubj.get(countInner);
         List<String> ctpInnerMapsObj = CtpExtraction.mapCtpToInMapsObj.get(countInner);
@@ -420,7 +420,7 @@ public class NestedLoopDetection {
                             tmpInner = CtpExtraction.mapCtpToTimeSecs.get(countInner);
                             tmpOuter.addAll(tmpInner);
                             CtpExtraction.mapCtpToTimeSecs.put(countInner, tmpOuter);
-                            mapDedLDFToServiceLDFAns.put(Integer.toString(countInner) + "_subj", CtpExtraction.mapCtpToOutMaps.get(countOuter));
+                            mapDedLDFToServiceLDFAns.put(Integer.toString(countInner) + "_subj", CtpExtraction.mapCtpToOutMapsSubject.get(countOuter));
                             mapDedLDFToServiceSignature.put(countInner, Integer.toString(countInner) + "_subj");
                         }
                     }
@@ -498,7 +498,7 @@ public class NestedLoopDetection {
                     tmpCtpToInMapsObj.put(countNew, CtpExtraction.mapCtpToInMapsObj.get(countOuter));
                 }
 
-                tmpCtpToOutMaps.put(countNew, CtpExtraction.mapCtpToOutMaps.get(countOuter));
+                tmpCtpToOutMaps.put(countNew, CtpExtraction.mapCtpToOutMapsSubject.get(countOuter));
                 mapCandDFToTimeSecsFinal.put(countNew, CtpExtraction.mapCtpToTimeSecs.get(countOuter));
                 mapCtpToSerialDs.put(countNew, mapRawCandidates.get(countOuter));
 
@@ -516,7 +516,7 @@ public class NestedLoopDetection {
 
         CtpExtraction.mapCtpToInMapsSubj = new HashMap<>();
         CtpExtraction.mapCtpToInMapsObj = new HashMap<>();
-        CtpExtraction.mapCtpToOutMaps = new HashMap<>();
+        CtpExtraction.mapCtpToOutMapsSubject = new HashMap<>();
         CtpExtraction.mapCtpToSerialID = new HashMap<>();
         mapDedLDFToServiceLDFAns = new HashMap<>();
         mapDedLDFToServiceSignature = new HashMap<>();
@@ -525,7 +525,7 @@ public class NestedLoopDetection {
         CtpExtraction.mapCtpToTimeSecs = (HashMap<Integer, List<Integer>>) mapCandDFToTimeSecsFinal.clone();
         CtpExtraction.mapCtpToInMapsObj = (HashMap<Integer, List<String>>) tmpCtpToInMapsObj.clone();
         CtpExtraction.mapCtpToInMapsSubj = (HashMap<Integer, List<String>>) tmpCtpToInMapsSubj.clone();
-        CtpExtraction.mapCtpToOutMaps = (HashMap<Integer, List<String>>) tmpCtpToOutMaps.clone();
+        CtpExtraction.mapCtpToOutMapsSubject = (HashMap<Integer, List<String>>) tmpCtpToOutMaps.clone();
         CtpExtraction.mapCtpToSerialID = (HashMap<Integer, List<String>>) mapCtpToSerialDs.clone();
         mapDedLDFToServiceLDFAns = (HashMap<String, List<String>>) mapDedLDFToServiceLDFAnsFinal.clone();
         mapDedLDFToServiceSignature = (HashMap<Integer, String>) mapDedLDFToServiceSignatureFinal.clone();

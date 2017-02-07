@@ -28,7 +28,9 @@ public class CtpExtraction {
     // match each CTP's id, to LDF servers that recieved it
     public static HashMap<Integer, List<String>> mapCtpToLDFServer;
     // match each CTP's id, to corresponding output fragment' values (i.e., out mappings)
-    public static HashMap<Integer, List<String>> mapCtpToOutMaps;
+    public static HashMap<Integer, List<String>> mapCtpToOutMapsSubject;
+    // match each CTP's id, to corresponding output fragment' values (i.e., out mappings)
+    public static HashMap<Integer, List<String>> mapCtpToOutMapsObject;
     // match each CTP's id, to all its corresponding timeSecs (total number in seconds)
     public static HashMap<Integer, List<Integer>> mapCtpToTimeSecs;
     // match each CTP's id, to corresponding (possible) injected values in the subject position
@@ -52,7 +54,8 @@ public class CtpExtraction {
         myMonetDB = myMonet;
 
         mapConstToAnsOccurs = new HashMap<>();
-        mapCtpToOutMaps = new HashMap<>();
+        mapCtpToOutMapsSubject = new HashMap<>();
+        mapCtpToOutMapsObject = new HashMap<>();
         mapCtpToSerialID = new HashMap<>();
         mapCtpToLDFServer = new HashMap<>();
         mapCtpToLogEntries = new HashMap<>();
@@ -236,7 +239,9 @@ public class CtpExtraction {
     private void convertEntryToCTP(int logEntryID, String query, String ansFragment, String LDFserver, int timeStamp) {
 
         List<String> ctpFormated = null;
-        List<String> allMappings = null;
+        List<List<String>> allOutputMaps = null;
+        List<String> outputSubj = null;
+        List<String> outputObj = null;
         List<String> allQueryUnities = null;
         List<String> allInjectVals = null;
 
@@ -247,6 +252,18 @@ public class CtpExtraction {
        if (query.contains("India")) {
             count2++;
         }
+       
+       
+         if (query.contains("http://dbpedia.org/resource/01.002_Fighter_Squadron_%22Storks%22")) {
+           int azrz=0;
+        }
+       
+         if (ansFragment.contains("Zena_Stein")) {
+           int azrz=0;
+        }
+         
+      //   System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX "+logEntryID);
+       
        
        if(count1>0&&count2>0)
            flagDum=true;
@@ -260,9 +277,9 @@ public class CtpExtraction {
 
         //Get all distinct answers from whole fragment string
         if (Configuration.webInsTraces) {
-            allMappings = getMapsWebInspector(ansFragment, allInjectVals, allQueryUnities);
+            outputObj = getMapsWebInspector(ansFragment, allInjectVals, allQueryUnities);
         } else if (Configuration.xmlRespTraces) {
-            allMappings = getMapsRealTraces(query, allInjectVals, ansFragment);
+            outputObj = getMapsRealTraces(query, allInjectVals, ansFragment);
         }
 
         //Get corespondig (new or existing) LDF candidate from current selector
@@ -277,7 +294,7 @@ public class CtpExtraction {
         //   BasicUtilis.printInfo("THe whole fragment: " + ansFragment);
         //  BasicUtilis.printInfo("Only Answers: " + allDistAns);
         // Set or update, new LDF candidate info
-        setCtpHashInfo(ctpFormated, allMappings, logEntryID, LDFserver, timeStamp, allQueryUnities);
+        setCtpHashInfo(ctpFormated, outputObj, outputObj, logEntryID, LDFserver, timeStamp, allQueryUnities);
     }
 
     /**
@@ -525,13 +542,13 @@ public class CtpExtraction {
      *
      * @param currCtp current CTP format
      * @param injectVals all injected values of log entry's query
-     * @param allAns list of distinct answers of current log entry's fragments
+     * @param outputSubj list of distinct answers of current log entry's fragments
      * @param logEntryID current log entry id
      * @param LDFserver current LDF server responding to query
      * @param timeStamp time in total number of seconds, of current log entry
      * @param queryUnities
      */
-    private void setCtpHashInfo(List<String> currCtp, List<String> allAns,
+    private void setCtpHashInfo(List<String> currCtp, List<String> outputSubj, List<String> outputObj,
             int logEntryID, String LDFserver, int timeStamp, List<String> queryUnities) {
 
         int newID = -1;
@@ -573,9 +590,9 @@ public class CtpExtraction {
         }
 
         // match current answer values to CTP
-        for (int i = 0; i < allAns.size(); i++) {
+        for (int i = 0; i < outputObj.size(); i++) {
 
-            BasicUtilis.insertToMap(mapCtpToOutMaps, allAns.get(i), currID);
+            BasicUtilis.insertToMap(mapCtpToOutMapsSubject, outputObj.get(i), currID);
         }
     }
 
