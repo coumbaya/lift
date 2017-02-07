@@ -80,6 +80,7 @@ def installMonetDB():
 
 	if operating_system == "Darwin":
 
+		executeCmd("sudo chown root /usr/local/bin/brew")
 		monetdbversion = os.popen("monetdb -v").read()
 
 		if "MonetDB Database Server" in monetdbversion:
@@ -153,8 +154,9 @@ def installCouchDB():
 
 		if operating_system == "Darwin":
 
-			executeCmd("wget https://dl.bintray.com/apache/couchdb/mac/1.6.1/Apache-CouchDB-1.6.1.zip")
-			executeCmd("unzip Apache-CouchDB-1.6.1.zip > test.txt")
+			executeCmd("sudo chown root /usr/local/bin/brew")
+			executeCmd("wget -O ./Apache-CouchDB-1.6.1.zip https://dl.bintray.com/apache/couchdb/mac/1.6.1/Apache-CouchDB-1.6.1.zip")
+			executeCmd("unzip Apache-CouchDB-1.6.1.zip")
 #			executeCmd("chmod 777 Apache\ CouchDB.app")
 			executeCmd("mv Apache\ CouchDB.app ~/Applications")
 			shutil.rmtree('Apache-CouchDB-1.6.1')
