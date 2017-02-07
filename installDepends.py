@@ -24,7 +24,7 @@ def installMonetDB():
 
 		if "MonetDB Database Server" in monetdbversion:
 			print("Monetdb already installed, version: "+monetdbversion)
-			resetDB = int(raw_input("Do you want to trancate existing version? (y/n): "))
+			resetDB = input("Do you want to trancate existing version? (y/n): ")
 
 		if resetDB == "y":
 
@@ -64,15 +64,14 @@ def installMonetDB():
 
 			executeCmd("wget --output-document=- https://www.monetdb.org/downloads/MonetDB-GPG-KEY | sudo apt-key add -")
 			executeCmd("sudo apt-get install monetdb5-sql monetdb-client")
-
-		        executeCmd("cd $HOME")
+			executeCmd("cd $HOME")
 			f = open('/.monetdb', 'w')
 			f.write("%s \n %s \n %s" % ("user=monetdb", 
 			 	"password=monetdb", "language=sql"))
 			f.close()
 
 			executeCmd("export DOTMONETDBFILE=~/.monetdb")
-	
+
 			f = open('/.bashrc', 'a+')
 			f.write("%s" % ("export DOTMONETDBFILE=~/.monetdb"))
 			f.close()
@@ -83,7 +82,7 @@ def installMonetDB():
 
 		if "MonetDB Database Server" in monetdbversion:
 			print("Monetdb already installed, version: "+monetdbversion)
-			resetDB = int(raw_input("Do you want to trancate existing version? (y/n): "))
+			resetDB = input("Do you want to trancate existing version? (y/n): ")
 
 		if resetDB == "y":
 
@@ -138,7 +137,7 @@ def installCouchDB():
 
 	if "couchdb - Apache CouchDB " in couchdbversion:
 		print("Couchdb already installed, version: "+couchdbversion)
-		resetDB = int(raw_input("Do you want to trancate existing version? (y/n): "))
+		resetDB = input("Do you want to trancate existing version? (y/n): ")
 
 	if resetDB == "y":
 
