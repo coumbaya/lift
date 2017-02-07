@@ -24,7 +24,7 @@ def installMonetDB():
 
 		if "MonetDB Database Server" in monetdbversion:
 			print("Monetdb already installed, version: "+monetdbversion)
-			resetDB = input("Do you want to trancate existing version? (y/n): ")
+			resetDB = raw_input("Do you want to trancate existing version? (y/n): ")
 
 		if resetDB == "y":
 
@@ -82,7 +82,7 @@ def installMonetDB():
 
 		if "MonetDB Database Server" in monetdbversion:
 			print("Monetdb already installed, version: "+monetdbversion)
-			resetDB = input("Do you want to trancate existing version? (y/n): ")
+			resetDB = raw_input("Do you want to trancate existing version? (y/n): ")
 
 		if resetDB == "y":
 
@@ -137,7 +137,7 @@ def installCouchDB():
 
 	if "couchdb - Apache CouchDB " in couchdbversion:
 		print("Couchdb already installed, version: "+couchdbversion)
-		resetDB = input("Do you want to trancate existing version? (y/n): ")
+		resetDB = raw_input("Do you want to trancate existing version? (y/n): ")
 
 	if resetDB == "y":
 
