@@ -8,7 +8,8 @@ operating_system = platform.system()
 #database = int(raw_input("Choose DB (1 for MonetDB, 2 for CouchDB or 3 for both): "))
 database = 3
 
-resetDB="y"
+resetDB=1
+#resetDB="y"
 
 def executeCmd(cmd):
 
@@ -17,6 +18,7 @@ def executeCmd(cmd):
 
 def installMonetDB():
 
+	resetDB=1
 	if operating_system == "Linux":
 
 
@@ -24,9 +26,9 @@ def installMonetDB():
 
 		if "MonetDB Database Server" in monetdbversion:
 			print("Monetdb already installed, version: "+monetdbversion)
-			resetDB = raw_input("Do you want to trancate existing version? (y/n): ")
+			resetDB = int(input("Do you want to trancate existing version? (1 for yes/2 for no): "))
 
-		if resetDB == "y":
+		if resetDB == 1:
 
 			print("installation monetdb sql client")
 
@@ -82,9 +84,11 @@ def installMonetDB():
 
 		if "MonetDB Database Server" in monetdbversion:
 			print("Monetdb already installed, version: "+monetdbversion)
-			resetDB = raw_input("Do you want to trancate existing version? (y/n): ")
+			resetDB = int(input("Do you want to trancate existing version? (1 for yes/2 for no): "))
+			if resetDB == 1 :
+				executeCmd("brew uninstall monetdb --force")
 
-		if resetDB == "y":
+		if resetDB == 1 :
 
 			print("installation monetDB")
 
@@ -102,7 +106,7 @@ def installMonetDB():
 			executeCmd("source ~/.bashrc")
 			f.close()
 	
-	if resetDB == "y":
+	if resetDB == 1:
 
 		executeCmd("monetdbd create $HOME/myMONETDB")
 		executeCmd("sudo chmod 777 -R  $HOME/myMONETDB")
@@ -131,15 +135,14 @@ def installMonetDB():
 
 def installCouchDB():
 
-	resetDB="y"
-
+	resetDB=1
 	couchdbversion = os.popen("couchdb -V").read()
 
 	if "couchdb - Apache CouchDB " in couchdbversion:
 		print("Couchdb already installed, version: "+couchdbversion)
-		resetDB = raw_input("Do you want to trancate existing version? (y/n): ")
+		resetDB = int(input("Do you want to trancate existing version? (1 for yes/2 for no): "))
 
-	if resetDB == "y":
+	if resetDB == 1:
 
 		print("Install CouchDB")
 
@@ -154,7 +157,7 @@ def installCouchDB():
 			executeCmd("unzip Apache-CouchDB-1.6.1.zip > /dev/zero")
 			executeCmd("chmod 777 Apache\ CouchDB.app")
 			executeCmd("sudo mv  Apache\ CouchDB.app ~/Applications")
-		shutil.rmtree('Apache-CouchDB-1.6.1')
+			shutil.rmtree('Apache-CouchDB-1.6.1')
 	
 if database == 1 or database == 3:
 
